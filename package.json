@@ -1,0 +1,9 @@
+{
+  "name": "alfheim",
+  "version": "0.0.1",
+  "description": "A package to help create, maintain, and grow JS component libraries",
+  "main": "index.js",
+  "repository": "https://github.com/Nasdaq/alfheim.git",
+  "author": "Haldun Anil <haldun.anil@nasdaq.com>",
+  "license": "MIT"
+}
