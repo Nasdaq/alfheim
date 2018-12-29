@@ -2,13 +2,29 @@
   "name": "alfheim",
   "version": "0.0.1",
   "description": "A package to help create, maintain, and grow JS component libraries",
-  "main": "index.js",
+  "bin": {
+    "alfheim": "cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Nasdaq/alfheim/issues"
+  },
   "repository": "https://github.com/Nasdaq/alfheim.git",
   "author": "Haldun Anil <haldun.anil@nasdaq.com>",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "keywords": [
+    "cli",
+    "cli-app",
+    "react",
+    "reactjs",
+    "component",
+    "component-library",
+    "components",
+    "react-component",
+    "typescript"
+  ],
   "scripts": {
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "version": "npm run changelog && git add CHANGELOG.md",
