@@ -8,12 +8,12 @@ const { getFilePath } = require("./getFilePath");
 const { overwriteHelper } = require("./overwriteQuestion");
 
 /**
- *
- * @param newFile
- * @param newFilename
- * @param filePath
- * @param overwrite
- * @returns {boolean}
+ * Create a new file at specified location, optionally overwrite if exists
+ * @param newFile {string}: the contents of the file to be created
+ * @param newFilename {string}: name of the file to be created
+ * @param filePath {string}: relative location of the file to be created
+ * @param overwrite {boolean}: if true, overwrite file if it already exists
+ * @returns {boolean}: true if file is created, false if not
  */
 function createFileHelper(newFile, newFilename, filePath, overwrite) {
   // create file while checking for overwrite

@@ -4,8 +4,8 @@
 const readPkg = require("read-pkg");
 
 /**
- *
- * @returns {boolean}
+ * Check if current working directory is the root of a valid JS project
+ * @returns {boolean}: true if 'package.json' found in cwd, false if not
  */
 function checkCwdRoot() {
   try {

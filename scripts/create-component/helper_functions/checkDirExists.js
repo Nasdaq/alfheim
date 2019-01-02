@@ -8,9 +8,10 @@ const log = console.log;
 const { checkCwdRoot } = require("./checkCwdRoot");
 
 /**
- *
- * @param dirName
- * @param create
+ * Check that a directory exists, optionally create if it doesn't
+ * @param dirName {string}: relative location of directory to be checked
+ * @param create {boolean}: indicate whether the directory should be created
+ *                          if it doesn't already exist
  * @returns {{found: boolean, created: boolean}}
  */
 function checkDirExists(dirName, create = false) {

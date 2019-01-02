@@ -68,6 +68,7 @@ const cli = meow(
   }
 );
 
+// grab variables we need from the cli input
 const flags = cli.flags;
 const newComponents = cli.input;
 
@@ -128,6 +129,7 @@ helpers.checkDirExists("src/components", true);
 // now let's actually create the files!
 for (let comp in newComponents) {
   if (newComponents.hasOwnProperty(comp)) {
+    // fetch the desired name of the component
     const compName = newComponents[comp];
 
     // inform user that we're beginning to create component files
@@ -216,6 +218,7 @@ for (let comp in newComponents) {
       !options.noStories
     );
 
+    // log successful output
     console.log(`
       ${chalk.green("Created all files!")}
       Your new component directory looks like this:

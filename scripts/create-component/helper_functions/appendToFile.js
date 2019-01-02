@@ -7,13 +7,16 @@ const log = console.log;
 const { getFilePath } = require("./getFilePath");
 
 /**
- *
- * @param section_dir
- * @param parent_dir
- * @param component_name
- * @param filename
- * @param content
- * @returns {boolean}
+ * Append code to an existing file
+ * @param section_dir {string}: first directory inside /src,
+ *                              typically "components"
+ * @param parent_dir {string}: directory that groups similar components
+ *                             together
+ * @param component_name {string}: name of the actual component, should
+ *                                 correspond to directory inside parent_dir
+ * @param filename {string}: filename to be appended to
+ * @param content {string}: content to append to file
+ * @returns {boolean}: true if appended, false if not
  */
 function appendToFile(
   section_dir,
