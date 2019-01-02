@@ -23,7 +23,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "node ./hooks/commit-msg.js && commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
