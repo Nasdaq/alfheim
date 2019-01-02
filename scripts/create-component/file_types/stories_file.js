@@ -1,5 +1,6 @@
 function makeFile(parent_dir, component_name) {
   return `import React from "react";
+
 import { storiesOf } from "@storybook/react";
 
 import ${component_name} from "./index";

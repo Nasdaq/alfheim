@@ -6,7 +6,7 @@ function camelCaseToDash(str) {
 
 function makeFile(parent_dir, component_name, shallow, render, mount) {
   // get data
-  const options = { shallow, render, mount };
+  const options = { mount, render, shallow };
   const data = {};
   Object.keys(options).forEach(key => {
     data[key] = {

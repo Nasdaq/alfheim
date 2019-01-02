@@ -30,8 +30,8 @@ const myPage = props => {
 
 ## Properties
 
-| propName      | propType                           | defaultValue | isRequired | Description                                     |
-| ------------- | ---------------------------------- | ------------ | ---------- | ----------------------------------------------- |
+| propName    | propType                           | defaultValue | isRequired | Description                                     |
+| ----------- | ---------------------------------- | ------------ | ---------- | ----------------------------------------------- |
 | \`children\`  | oneOfType( node, arrayOf( node ) ) | -            | -          | is the children to be passed into component     |
 | \`className\` | string                             | -            | -          | is the class name of the component              |
 | \`id\`        | string                             | -            | -          | name to be passed to the DOM                    |
