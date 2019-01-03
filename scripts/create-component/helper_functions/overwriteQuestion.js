@@ -11,20 +11,7 @@ const chalk = require("chalk");
  * @returns {boolean}: true if user answered "y", false if "n"
  */
 function overwriteQuestion(question_text) {
-  const question = readlineSync.question(question_text).toLowerCase();
-
-  if (question === "y") {
-    return true;
-  } else if (question === "n") {
-    return false;
-  } else {
-    console.error(
-      chalk.red(
-        '\nInvalid response. Please enter "y" or "n" without the quotes.'
-      )
-    );
-    return overwriteQuestion(question_text);
-  }
+  return readlineSync.keyInYNStrict(question_text);
 }
 
 /**
@@ -42,7 +29,7 @@ const overwriteHelper = (overwrite, filePath) => {
     // check if file exists
     if (fs.existsSync(filePath)) {
       cont = overwriteQuestion(
-        chalk.redBright(`\n'${filePath}' already exists. Overwrite (y/n)? `)
+        chalk.redBright(`'${filePath}' already exists. Overwrite?`)
       );
     } else {
       cont = true;
