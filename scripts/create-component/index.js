@@ -2,7 +2,7 @@
 "use strict";
 
 const meow = require("meow");
-const helpers = require("./helper_functions");
+const utils = require("./utils");
 const chalk = require("chalk");
 const log = console.log;
 const error = console.error;
@@ -83,7 +83,7 @@ const flags = cli.flags;
 const newComponents = cli.input;
 
 // map flags to available component options
-const options = helpers.mapFlagsToOptions(cli.flags);
+const options = utils.mapFlagsToOptions(cli.flags);
 
 // throw error if no components mentioned
 if (newComponents.length === 0) {
@@ -109,7 +109,7 @@ newComponents.forEach(arg => {
 
 // warnings for missing options and default values, escape hatch
 if (!options.hasOwnProperty("componentDirectory")) {
-  const primitivesQuestion = helpers.overwriteQuestion(
+  const primitivesQuestion = utils.overwriteQuestion(
     chalk.cyan(
       "\nWarning: no directory specified, all components will be created in 'Primitives' directory. Continue?"
     )
@@ -134,7 +134,7 @@ if (!options.shallowTests && !options.renderTests && !options.mountedTests) {
 
 // before creating our new files, let's start by ensuring
 // that we have the right folder structure in place
-const srcDirExists = helpers.checkDirExists("src");
+const srcDirExists = utils.checkDirExists("src");
 
 if (!srcDirExists.found) {
   error(
@@ -147,7 +147,7 @@ if (!srcDirExists.found) {
 }
 
 // create components folder within 'src' if it doesn't already exist
-helpers.checkDirExists("src/components", true);
+utils.checkDirExists("src/components", true);
 
 // now let's actually create the files!
 for (let comp in newComponents) {
@@ -160,7 +160,7 @@ for (let comp in newComponents) {
 
     // check if required directories exist, if not create
     // check and/or create parent_dir
-    const parentDirResults = helpers.checkDirExists(
+    const parentDirResults = utils.checkDirExists(
       `src/components/${options.componentDirectory}`,
       true
     );
@@ -168,7 +168,7 @@ for (let comp in newComponents) {
     // if parent dir created, then also perform the actions below
     if (parentDirResults.created) {
       // create blank index.stories.ts in the folder
-      helpers.createFile(
+      utils.createFile(
         "components",
         options.componentDirectory,
         null,
@@ -176,7 +176,7 @@ for (let comp in newComponents) {
       );
 
       // add new line item to /src/stories/index.stories.ts to reference the file in 1
-      helpers.appendToFile(
+      utils.appendToFile(
         null,
         null,
         null,
@@ -186,7 +186,7 @@ for (let comp in newComponents) {
     }
 
     // check and/or create component dir
-    helpers.checkDirExists(
+    utils.checkDirExists(
       `src/components/${options.componentDirectory}/${compName}`,
       true
     );
@@ -206,7 +206,7 @@ for (let comp in newComponents) {
       templates.push("stories_file");
 
       // add new line item to /src/stories/index.stories.ts to reference the file in 1
-      helpers.appendToFile(
+      utils.appendToFile(
         "components",
         options.componentDirectory,
         null,
@@ -220,7 +220,7 @@ for (let comp in newComponents) {
       console.log(
         chalk.cyan(`\nCreating ${templates[file].replace("_", " ")}...`)
       );
-      helpers.createFileFromBoilerplate(
+      utils.createFileFromBoilerplate(
         templates[file],
         "components",
         options.componentDirectory,
@@ -231,7 +231,7 @@ for (let comp in newComponents) {
 
     // create test file
     console.log(chalk.cyan(`\nCreating test file...`));
-    helpers.createFileFromBoilerplate(
+    utils.createFileFromBoilerplate(
       "test_file",
       "components",
       options.componentDirectory,
