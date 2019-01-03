@@ -28,21 +28,31 @@ const cli = meow(
                                             initializes component as a class-based component
                                             Default: false
       
-      -s, --no-shallow-tests                Shallow tests will be included in testing files
-                                            Default: false
+      -s, --shallow-tests                   Shallow tests will be included in testing files
+                                            Default: true
       
-      -r, --no-render-tests                 Render tests will be included in testing files (most UI 
+      -r, --render-tests                    Render tests will be included in testing files (most UI 
                                             components don't need this, so you may find it useful 
                                             to make this false)
-                                            Default: false
+                                            Default: true
                                             
-      -m, --no-mounted-tests                Mount tests will be included in testing files (most UI 
+      -m, --mounted-tests                   Mount tests will be included in testing files (most UI 
                                             components don't need this, so you may find it useful 
                                             to make this false)
-                                            Default: false
+                                            Default: true
                                             
-      --no-stories                          Will add boilerplate .stories.ts file for Storybook.js
-                                            Default: false
+      --stories                             Will add boilerplate .stories.ts file for Storybook.js
+                                            Default: true
+    
+    Additional Options
+      Prepending boolean flags with "no" will result in their 
+      value being set as "false". For instance, if you don't 
+      want a "stories" file for your component, passing the 
+      "--no-stories" flag will cause the stories file to be omitted. 
+      
+      You can also use this functionality with aliases. For instance,
+      to omit mounted tests, simply pass either the "--no-m" or 
+      "--no-mounted-tests" flags to omit mounted tests in your test file.                                            
 `,
   {
     flags: {
@@ -55,13 +65,13 @@ const cli = meow(
       functional: {
         alias: "f"
       },
-      "no-shallow-tests": {
+      "shallow-tests": {
         alias: "s"
       },
-      "no-render-tests": {
+      "render-tests": {
         alias: "r"
       },
-      "no-mounted-tests": {
+      "mounted-tests": {
         alias: "m"
       }
     }
@@ -98,26 +108,39 @@ newComponents.forEach(arg => {
 });
 
 // warnings for missing options and default values, escape hatch
-if (!flags.hasOwnProperty("componentDirectory")) {
+if (!options.hasOwnProperty("componentDirectory")) {
   const primitivesQuestion = helpers.overwriteQuestion(
     chalk.cyan(
-      "\nWarning: no directory specified, all components will be created in 'Primitives' directory. Continue (y/n)? "
+      "\nWarning: no directory specified, all components will be created in 'Primitives' directory. Continue?"
     )
   );
   if (!primitivesQuestion) {
     log(chalk.yellow("\nExiting...\n"));
-    process.exit();
+    process.exit(1);
   }
 }
 
-// before creating our new files, let's start by ensuring that we have the right folder structure in place
+// if all three types of tests are omitted, then raise an error
+// stating that we need at least one type of testing
+if (!options.shallowTests && !options.renderTests && !options.mountedTests) {
+  error(
+    chalk.red(`
+      Error: you must create a new component with at least 1 type 
+      of tests (shallow, render, and/or mount).  
+    `)
+  );
+  process.exit(1);
+}
+
+// before creating our new files, let's start by ensuring
+// that we have the right folder structure in place
 const srcDirExists = helpers.checkDirExists("src");
 
 if (!srcDirExists.found) {
-  log(
+  error(
     chalk.red(`
-      No "/src" directory found. Please ensure that your project is properly
-      initialized with a "/src" directory and try again. 
+      Error: No "/src" directory found. Please ensure that your project 
+      is properly initialized with a "/src" directory and try again. 
   `)
   );
   process.exit(1);
@@ -179,7 +202,7 @@ for (let comp in newComponents) {
     }
 
     // create stories.ts
-    if (!options.noStories) {
+    if (options.stories) {
       templates.push("stories_file");
 
       // add new line item to /src/stories/index.stories.ts to reference the file in 1
@@ -212,10 +235,10 @@ for (let comp in newComponents) {
       options.componentDirectory,
       compName,
       options.overwriteExisting,
-      !options.noShallowTests,
-      !options.noRenderTests,
-      !options.noMountedTests,
-      !options.noStories
+      options.shallowTests,
+      options.renderTests,
+      options.mountedTests,
+      options.stories
     );
 
     // log successful output
@@ -232,9 +255,7 @@ for (let comp in newComponents) {
           ├── ${compName}
             ├── index.tsx
             ├── ${compName}.test.tsx
-            ├── ${compName}.stories.tsx ${
-      !options.noStories ? "" : "-> omitted"
-    }
+            ├── ${compName}.stories.tsx ${options.stories ? "" : "-> omitted"}
             ├── ${compName}.scss
             ├── README.md
     `);

@@ -2,10 +2,10 @@ const createComponentOptions = {
   overwriteExisting: false,
   componentDirectory: "Primitives",
   functional: false,
-  noShallowTests: false,
-  noRenderTests: false,
-  noMountedTests: false,
-  noStories: false
+  shallowTests: true,
+  renderTests: true,
+  mountedTests: true,
+  stories: true
 };
 
 module.exports = createComponentOptions;
