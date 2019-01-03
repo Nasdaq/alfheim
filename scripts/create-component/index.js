@@ -217,7 +217,9 @@ for (let comp in newComponents) {
 
     // batch create files from list
     for (let file in templates) {
-      console.log(`Creating ${templates[file].replace("_", " ")}...`);
+      console.log(
+        chalk.cyan(`\nCreating ${templates[file].replace("_", " ")}...`)
+      );
       helpers.createFileFromBoilerplate(
         templates[file],
         "components",
@@ -228,7 +230,7 @@ for (let comp in newComponents) {
     }
 
     // create test file
-    console.log(`Creating test file...`);
+    console.log(chalk.cyan(`\nCreating test file...`));
     helpers.createFileFromBoilerplate(
       "test_file",
       "components",

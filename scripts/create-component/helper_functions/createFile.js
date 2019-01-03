@@ -19,11 +19,11 @@ function createFileHelper(newFile, newFilename, filePath, overwrite) {
   // create file while checking for overwrite
   if (overwriteHelper(overwrite, filePath)) {
     fs.writeFileSync(filePath, newFile);
-    log(chalk.green(`${filePath} created.\n`));
+    log(chalk.green(`${filePath} created.`));
     return true;
   }
 
-  log(chalk.green(`Skipping ${newFilename}.\n`));
+  log(chalk.yellow(`Skipping ${newFilename}.`));
   return false;
 }
 
