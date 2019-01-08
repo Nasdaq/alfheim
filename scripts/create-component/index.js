@@ -7,6 +7,8 @@ const chalk = require("chalk");
 const log = console.log;
 const error = console.error;
 
+const meowOptions = require("./options");
+
 const cli = meow(
   `
     Usage
@@ -79,11 +81,10 @@ const cli = meow(
 );
 
 // grab variables we need from the cli input
-const flags = cli.flags;
 const newComponents = cli.input;
 
 // map flags to available component options
-const options = utils.mapFlagsToOptions(cli.flags);
+const options = { ...meowOptions, ...cli.flags };
 
 // throw error if no components mentioned
 if (newComponents.length === 0) {
