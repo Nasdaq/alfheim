@@ -1,19 +1,24 @@
+"use strict";
+
+const { FileType } = require("../../../utils");
+
 const readPkg = require("read-pkg");
 const pkg = readPkg.sync();
 
-function makeFile(parent_dir, component_name) {
-  return `# ${component_name}
+const readmeTemplate = new FileType({ filename: "README.md" });
+
+readmeTemplate.setTemplate`# ${p => p.componentName}
 
 <!-- STORY -->
 
 ## Introduction
 
-\`${component_name}\` is an easy-to-use component.
+\`${p => p.componentName}\` is an easy-to-use component.
 
 ## Usage
 
 \`\`\`javascript
-import { ${component_name} } from '${pkg.name}';
+import { ${p => p.componentName} } from '${() => pkg.name}';
 \`\`\`
 
 ## Example use
@@ -22,7 +27,7 @@ import { ${component_name} } from '${pkg.name}';
 const myPage = props => {
   return (
     <main>
-      <${component_name} />
+      <${p => p.componentName} />
     </main>
   );
 };
@@ -38,10 +43,5 @@ const myPage = props => {
 | \`name\`      | string                             | -            | -          | id to be passed to the DOM                      |
 | \`style\`     | object                             | -            | -          | is the style object to be passed into component |
 `;
-}
 
-function makeFilename(component_name) {
-  return "README.md";
-}
-
-module.exports = { makeFile, makeFilename };
+module.exports = readmeTemplate;

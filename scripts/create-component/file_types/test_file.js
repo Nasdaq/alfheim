@@ -1,113 +1,128 @@
+"use strict";
+
 const faker = require("faker");
 
-function camelCaseToDash(str) {
-  return str.replace(/([a-zA-Z])(?=[A-Z])/g, "$1-").toLowerCase();
+const { FileType, camelCaseToDash } = require("../../../utils");
+
+// create a subclass
+class TestFileType extends FileType {
+  constructor(props) {
+    super(props);
+  }
+
+  makeFile(shallow, render, mount) {
+    // deconstruct props
+    const { componentName } = this.props;
+
+    // get data
+    const options = { mount, render, shallow };
+    const data = {};
+    Object.keys(options).forEach(key => {
+      data[key] = {
+        defined: options[key],
+        let: null,
+        func: null,
+        beforeEach: null
+      };
+    });
+
+    // get imports
+    const imports = Object.keys(data)
+      .filter(key => data[key].defined)
+      .join(", ");
+
+    // let statements
+    Object.keys(data).forEach(key => {
+      data[key].let = data[key].defined ? `let ${key}${componentName};` : null;
+    });
+
+    // functions
+    Object.keys(data).forEach(key => {
+      data[key].func = data[key].defined
+        ? `const ${key}TestComponent = () => {
+    if (!${key}${componentName}) {
+      ${key}${componentName} = ${key}(<${componentName} {...props} />)${
+            key === "shallow" ? ".dive()" : ""
+          };
+    }
+    return ${key}${componentName};
+  };`
+        : null;
+    });
+
+    // beforeEach inclusions
+    Object.keys(data).forEach(key => {
+      data[key].beforeEach = data[key].defined
+        ? `${key}${componentName} = undefined;`
+        : null;
+    });
+
+    // now add imports and data into 'props' object
+    this.setProps({ imports, data });
+
+    // don't forget to call the original makeFile
+    return super.makeFile();
+  }
 }
 
-function makeFile(parent_dir, component_name, shallow, render, mount) {
-  // get data
-  const options = { mount, render, shallow };
-  const data = {};
-  Object.keys(options).forEach(key => {
-    data[key] = {
-      defined: options[key],
-      let: null,
-      func: null,
-      beforeEach: null
-    };
-  });
-
-  // get imports
-  const imports = Object.keys(data)
-    .filter(key => data[key].defined)
-    .join(", ");
-
-  // let statements
-  Object.keys(data).forEach(key => {
-    data[key].let = data[key].defined ? `let ${key}${component_name};` : null;
-  });
-
-  // functions
-  Object.keys(data).forEach(key => {
-    data[key].func = data[key].defined
-      ? `const ${key}TestComponent = () => {
-    if (!${key}${component_name}) {
-      ${key}${component_name} = ${key}(<${component_name} {...props} />)${
-          key === "shallow" ? ".dive()" : ""
-        };
-    }
-    return ${key}${component_name};
-  };`
-      : null;
-  });
-
-  // beforeEach inclusions
-  Object.keys(data).forEach(key => {
-    data[key].beforeEach = data[key].defined
-      ? `${key}${component_name} = undefined;`
-      : null;
-  });
-
-  return `import React from "react";
+// initialize!
+const testTemplate = new TestFileType({ fileExtension: "test.tsx" });
+testTemplate.setTemplate`import React from "react";
   
-import { ${imports} } from "enzyme";
+import { ${p => p.imports} } from "enzyme";
 
-import ${component_name} from "./";
+import ${p => p.componentName} from "./";
 
-describe("${component_name}", () => {
+describe("${p => p.componentName}", () => {
   let props; 
-  ${Object.values(data)
-    .filter(value => value.defined)
-    .map(value => value.let)
-    .join("\n  ")}
+  ${p =>
+    Object.values(p.data)
+      .filter(value => value.defined)
+      .map(value => value.let)
+      .join("\n  ")}
   
-  ${Object.values(data)
-    .filter(value => value.defined)
-    .map(value => value.func)
-    .join("\n\n  ")}
+  ${p =>
+    Object.values(p.data)
+      .filter(value => value.defined)
+      .map(value => value.func)
+      .join("\n\n  ")}
 
   beforeEach(() => {
     props = {
-      children: <div>${faker.lorem.paragraph()}</div>,
-      className: "${faker.random.word()}",
-      id: "${faker.random.word()}",
-      name: "${faker.random.word()}",
-      style: { color: "${faker.internet.color()}" }
+      children: <div>${() => faker.lorem.paragraph()}</div>,
+      className: "${() => faker.random.word()}",
+      id: "${() => faker.random.word()}",
+      name: "${() => faker.random.word()}",
+      style: { color: "${() => faker.internet.color()}" }
       
     };
-    ${Object.values(data)
-      .filter(value => value.defined)
-      .map(value => value.beforeEach)
-      .join("\n    ")}
+    ${p =>
+      Object.values(p.data)
+        .filter(value => value.defined)
+        .map(value => value.beforeEach)
+        .join("\n    ")}
   });
 
   // Shallow / unit tests begin here
-  it(\`should always render a 'div[data-ut="${camelCaseToDash(
-    component_name
-  )}"]' element\`, () => {
+  it(\`should always render a 'div[data-ut="${p =>
+    camelCaseToDash(p.componentName)}"]' element\`, () => {
     expect(
-      shallowTestComponent().find('div[data-ut="${camelCaseToDash(
-        component_name
-      )}"]').length
+      shallowTestComponent().find('div[data-ut="${p =>
+        camelCaseToDash(p.componentName)}"]').length
     ).toBe(1);
   });
 
-  it(\`should always pass all its props to the 'div[data-ut="${camelCaseToDash(
-    component_name
-  )}"]' element\`, () => {
+  it(\`should always pass all its props to the 'div[data-ut="${p =>
+    camelCaseToDash(p.componentName)}"]' element\`, () => {
     expect(
       shallowTestComponent()
-        .find('div[data-ut="${camelCaseToDash(component_name)}"]')
+        .find('div[data-ut="${p => camelCaseToDash(p.componentName)}"]')
         .props()
-    ).toMatchObject({...props, className: \`Alfheim__${parent_dir}__${component_name} \${props.className}\`});
+    ).toMatchObject({...props, className: \`Alfheim__${p => p.parentDir}__${p =>
+  p.componentName} \${props.className}\`});
   });  
  
   // Render / mount / integration tests begin here
 });`;
-}
 
-function makeFilename(component_name) {
-  return `${component_name}.test.tsx`;
-}
-
-module.exports = { makeFile, makeFilename };
+module.exports = testTemplate;

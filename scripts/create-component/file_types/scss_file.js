@@ -1,13 +1,13 @@
-function makeFile(parent_dir, component_name) {
-  return `/* todo: delete file if not needed */
+"use strict";
+
+const { FileType } = require("../../../utils");
+
+const scssTemplate = new FileType({ fileExtension: "scss" });
+
+scssTemplate.setTemplate`/* todo: delete file if not needed */
 @import "../../../styles/scss/main";
 
-.Alfheim__${parent_dir}__${component_name} { 
+.Alfheim__${p => p.parentDir}__${p => p.componentName} {
 }`;
-}
 
-function makeFilename(component_name) {
-  return `${component_name}.scss`;
-}
-
-module.exports = { makeFile, makeFilename };
+module.exports = scssTemplate;

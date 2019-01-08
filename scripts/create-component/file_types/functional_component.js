@@ -1,29 +1,27 @@
-function camelCaseToDash(str) {
-  return str.replace(/([a-zA-Z])(?=[A-Z])/g, "$1-").toLowerCase();
-}
+"use strict";
 
-function makeFile(parent_dir, component_name) {
-  return `import React from "react";
-import "./${component_name}.scss";
+const { FileType, camelCaseToDash } = require("../../../utils");
+
+const functionalTemplate = new FileType({ filename: "index.tsx" });
+
+functionalTemplate.setTemplate`import React from "react";
+import "./${p => p.componentName}.scss";
 
 import { withStyleClassName } from "../../../util";
 
-interface ${component_name}Props extends React.HTMLAttributes<HTMLElement> {}
+interface ${p =>
+  p.componentName}Props extends React.HTMLAttributes<HTMLElement> {}
 
-const Wrapped${component_name}: React.SFC<${component_name}Props> = (props: ${component_name}Props) => (
-  <div {...props} data-ut="${camelCaseToDash(component_name)}" />
+const Wrapped${p => p.componentName}: React.SFC<${p =>
+  p.componentName}Props> = (props: ${p => p.componentName}Props) => (
+  <div {...props} data-ut="${p => camelCaseToDash(p.componentName)}" />
 );
 
-const ${component_name} = withStyleClassName(
-  Wrapped${component_name}, 
-  "Alfheim__${parent_dir}__${component_name}"
+const ${p => p.componentName} = withStyleClassName(
+  Wrapped${p => p.componentName}, 
+  "Alfheim__${p => p.parentDir}__${p => p.componentName}"
 );
 
-export default ${component_name};`;
-}
+export default ${p => p.componentName};`;
 
-function makeFilename() {
-  return `index.tsx`;
-}
-
-module.exports = { makeFile, makeFilename };
+module.exports = functionalTemplate;

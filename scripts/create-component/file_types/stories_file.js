@@ -1,27 +1,29 @@
-function makeFile(parent_dir, component_name) {
-  return `import React from "react";
+"use strict";
+
+const { FileType } = require("../../../utils");
+
+const storiesTemplate = new FileType({ fileExtension: "stories.tsx" });
+
+storiesTemplate.setTemplate`import React from "react";
 
 import { storiesOf } from "@storybook/react";
 
-import ${component_name} from "./index";
-import ${component_name}Readme from "./README.md";
+import ${p => p.componentName} from "./index";
+import ${p => p.componentName}Readme from "./README.md";
 
 import { withKnobs } from "@storybook/addon-knobs/react";
 import { withMarkup } from "../../../../.storybook/config";
 
-const ${component_name}Stories = storiesOf("${parent_dir}/${component_name}", module);
+const ${p => p.componentName}Stories = storiesOf("${p => p.componentName}/${p =>
+  p.componentName}", module);
 
 // add the knobs as a decorator
-${component_name}Stories.addDecorator(withKnobs);
+${p => p.componentName}Stories.addDecorator(withKnobs);
 
-${component_name}Stories.add("basic use", withMarkup(${component_name}Readme, () => (<${component_name} />)));
+${p => p.componentName}Stories.add("basic use", withMarkup(${p =>
+  p.componentName}Readme, () => (<${p => p.componentName} />)));
 
-export default ${component_name}Stories;
+export default ${p => p.componentName}Stories;
 `;
-}
 
-function makeFilename(component_name) {
-  return `${component_name}.stories.tsx`;
-}
-
-module.exports = { makeFile, makeFilename };
+module.exports = storiesTemplate;
