@@ -5,7 +5,7 @@ const fs = require("fs");
 const chalk = require("chalk");
 const error = console.error;
 const log = console.log;
-const { checkCwdRoot } = require("./checkCwdRoot");
+const { isCwdRoot } = require("./isCwdRoot");
 
 /**
  * Check that a directory exists, optionally create if it doesn't
@@ -17,7 +17,7 @@ const { checkCwdRoot } = require("./checkCwdRoot");
 function checkDirExists(dirName, create = false) {
   const dir = process.cwd() + "/" + dirName;
 
-  if (!checkCwdRoot()) {
+  if (!isCwdRoot()) {
     error(
       chalk.red(`
       Error: No "package.json" found, please ensure that your current working directory

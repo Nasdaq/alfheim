@@ -7,6 +7,8 @@ const log = console.log;
 const { getFilePath } = require("./getFilePath");
 const { overwriteHelper } = require("./overwriteQuestion");
 
+const fileTypes = require("../file_types");
+
 /**
  * Create a new file at specified location, optionally overwrite if exists
  * @param newFile {string}: the contents of the file to be created
@@ -29,56 +31,54 @@ function createFileHelper(newFile, newFilename, filePath, overwrite) {
 
 /**
  *
- * @param template_filename
- * @param section_dir
- * @param parent_dir
- * @param component_name
+ * @param templateFilename
+ * @param sectionDir
+ * @param parentDir
+ * @param componentName
  * @param overwrite
  * @param args
  */
 function createFileFromBoilerplate(
-  template_filename,
-  section_dir,
-  parent_dir,
-  component_name,
+  templateFilename,
+  sectionDir,
+  parentDir,
+  componentName,
   overwrite,
   ...args
 ) {
   // generate file to be created
-  const templateFile = require(`../file_types/${template_filename}`);
-  const newFile = templateFile.makeFile(parent_dir, component_name, ...args);
-  const newFilename = templateFile.makeFilename(component_name);
-  const filePath = `src/${section_dir}/${parent_dir}/${component_name}/${newFilename}`;
+  const templateFile = fileTypes[templateFilename];
+
+  templateFile.setProps({ parentDir, componentName });
+  const newFile = templateFile.makeFile(...args);
+  const newFilename = templateFile.makeFilename();
+
+  const filePath = `src/${sectionDir}/${parentDir}/${componentName}/${newFilename}`;
 
   // create file while checking for overwrite
-  createFileHelper(newFile, newFilename, filePath, overwrite);
+  return createFileHelper(newFile, newFilename, filePath, overwrite);
 }
 
 /**
  *
- * @param section_dir
- * @param parent_dir
- * @param component_name
+ * @param sectionDir
+ * @param parentDir
+ * @param componentName
  * @param filename
  * @param content
  */
 function createFile(
-  section_dir,
-  parent_dir,
-  component_name,
+  sectionDir,
+  parentDir,
+  componentName,
   filename,
   content = ""
 ) {
   // generate file to be created
-  const filePath = getFilePath(
-    section_dir,
-    parent_dir,
-    component_name,
-    filename
-  );
+  const filePath = getFilePath(sectionDir, parentDir, componentName, filename);
 
   // create file; cannot overwrite existing
-  createFileHelper(content, filename, filePath, false);
+  return createFileHelper(content, filename, filePath, false);
 }
 
 module.exports = { createFileFromBoilerplate, createFile };
