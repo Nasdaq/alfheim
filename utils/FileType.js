@@ -18,6 +18,10 @@ class FileType {
     this.props = { ...props };
   }
 
+  getProps() {
+    return this.props;
+  }
+
   setProps(props) {
     this.props = { ...this.props, ...props };
   }
@@ -32,9 +36,9 @@ class FileType {
     if (!template) {
       console.error(
         chalk.red(`
-      Error: No template file found. Did you forget to
-      call the "setTemplate" method?
-    `)
+          Error: No template file found. Did you forget to
+          call the "setTemplate" method?
+        `)
       );
       process.exit(1);
     }

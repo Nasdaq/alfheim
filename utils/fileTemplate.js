@@ -1,5 +1,7 @@
 "use strict";
 
+const chalk = require("chalk");
+
 function fileTemplate(strings, ...values) {
   return props => {
     if (values.length > 0 && !props) {
