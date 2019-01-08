@@ -26,6 +26,8 @@
     "typescript"
   ],
   "scripts": {
+    "test": "jest --watch --env=jsdom --config=jest.config.js",
+    "test:ci": "CI=true jest --env=jsdom --config=jest.config.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "version": "npm run changelog && git add CHANGELOG.md",
     "postversion": "git push --follow-tags"
@@ -33,9 +35,16 @@
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
     "conventional-changelog-cli": "^2.0.11",
     "husky": "^1.2.1",
-    "prettier": "^1.15.3"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "markdown-loader-jest": "^0.1.1",
+    "prettier": "^1.15.3",
+    "regenerator-runtime": "^0.13.1"
   },
   "husky": {
     "hooks": {
