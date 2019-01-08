@@ -3,6 +3,7 @@
 import { createFile, createFileFromBoilerplate } from "../createFile";
 
 import fs from "fs";
+import faker from "faker";
 jest.mock("fs");
 jest.mock("readline-sync");
 
@@ -83,25 +84,41 @@ describe(`create file from boilerplate`, () => {
 });
 
 describe(`create file`, () => {
-  const content = "content";
   const filename = "filename";
-  const fn = () =>
+  const fn = content =>
     createFile(section_dir, parent_dir, component_name, filename, content);
 
   describe("if file doesn't exist", () => {
     let result;
     beforeEach(() => {
       fs.existsSync = jest.fn(() => false);
-      result = fn();
-    });
-
-    it(`should create it with provided content`, () => {
-      expect(fs.writeFileSync).toBeCalledTimes(1);
-      expect(fs.writeFileSync).toBeCalledWith(expect.any(String), content);
     });
 
     it(`should return 'true'`, () => {
-      expect(result).toBe(true);
+      expect(fn()).toBe(true);
+    });
+
+    describe(`if 'content' is defined`, () => {
+      let content = faker.random.word();
+      beforeEach(() => {
+        result = fn(content);
+      });
+
+      it(`should create it with provided content`, () => {
+        expect(fs.writeFileSync).toBeCalledTimes(1);
+        expect(fs.writeFileSync).toBeCalledWith(expect.any(String), content);
+      });
+    });
+
+    describe(`if 'content' is NOT defined`, () => {
+      beforeEach(() => {
+        result = fn();
+      });
+
+      it(`should create it with default content, which is an empty string`, () => {
+        expect(fs.writeFileSync).toBeCalledTimes(1);
+        expect(fs.writeFileSync).toBeCalledWith(expect.any(String), "");
+      });
     });
   });
 
