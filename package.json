@@ -1,15 +1,33 @@
 {
   "name": "alfheim",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A package to help create, maintain, and grow JS component libraries",
-  "main": "index.js",
+  "bin": {
+    "alfheim": "cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/Nasdaq/alfheim/issues"
+  },
   "repository": "https://github.com/Nasdaq/alfheim.git",
   "author": "Haldun Anil <haldun.anil@nasdaq.com>",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
+  "keywords": [
+    "cli",
+    "cli-app",
+    "react",
+    "reactjs",
+    "component",
+    "component-library",
+    "components",
+    "react-component",
+    "typescript"
+  ],
   "scripts": {
+    "test": "jest --watch --env=jsdom --config=jest.config.js",
+    "test:ci": "CI=true jest --env=jsdom --config=jest.config.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "version": "npm run changelog && git add CHANGELOG.md",
     "postversion": "git push --follow-tags"
@@ -17,13 +35,31 @@
   "devDependencies": {
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
     "conventional-changelog-cli": "^2.0.11",
     "husky": "^1.2.1",
-    "prettier": "^1.15.3"
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "markdown-loader-jest": "^0.1.1",
+    "prettier": "^1.15.3",
+    "regenerator-runtime": "^0.13.1"
   },
   "husky": {
     "hooks": {
       "commit-msg": "node ./hooks/commit-msg.js && commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cross-spawn": "^6.0.5",
+    "faker": "^4.1.0",
+    "meow": "^5.0.0",
+    "read-pkg": "^4.0.1",
+    "readline-sync": "^1.4.9"
+  },
+  "peerDependencies": {
+    "react": "^16.6.0"
   }
 }
