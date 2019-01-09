@@ -1,6 +1,6 @@
 {
   "name": "alfheim",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A package to help create, maintain, and grow JS component libraries",
   "bin": {
     "alfheim": "cli.js"
