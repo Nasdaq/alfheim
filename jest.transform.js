@@ -1,3 +1,3 @@
 module.exports = require("babel-jest").createTransformer({
-  presets: ["env"] // or whatever you need,
+  presets: ["@babel/preset-env"] // or whatever you need,
 });
