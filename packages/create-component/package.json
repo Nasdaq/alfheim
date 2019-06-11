@@ -1,0 +1,15 @@
+{
+  "name": "@alfheim/create-component",
+  "version": "0.0.2",
+  "description": "A package to create new React components",
+  "main": "index.js",
+  "repository": "https://github.com/Nasdaq/alfheim.git",
+  "author": "Haldun Anil",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "meow": "^5.0.0",
+    "read-pkg": "^5.1.1",
+    "readline-sync": "^1.4.9"
+  }
+}
