@@ -1,8 +1,10 @@
 {
   "name": "@alfheim/cli",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "CLI to manage alfheim infrastructure",
-  "main": "index.js",
+  "bin": {
+    "alfheim": "index.js"
+  },
   "repository": "https://github.com/Nasdaq/alfheim.git",
   "author": "Haldun Anil",
   "license": "MIT",
