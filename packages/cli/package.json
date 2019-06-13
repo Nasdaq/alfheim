@@ -3,17 +3,17 @@
   "version": "0.0.1",
   "description": "CLI to manage alfheim infrastructure",
   "bin": {
-    "alfheim": "index.js"
+    "alfheim": "./index.js"
   },
   "repository": "https://github.com/Nasdaq/alfheim.git",
   "author": "Haldun Anil",
   "license": "MIT",
   "dependencies": {
-    "@alfheim/create-component": "^0.0.2",
+    "@alfheim/create-component": "^0.0.1",
     "chalk": "^2.4.2",
     "cross-spawn": "^6.0.5"
   },
-  "publishConfig": {
-    "registry": "https://nexus.exchsys.nasdaq.com/repository/npm-alfheim/"
+  "scripts": {
+    "create-component": "@alfheim/create-component"
   }
 }

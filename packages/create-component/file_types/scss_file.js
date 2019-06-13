@@ -1,6 +1,6 @@
 "use strict";
 
-const { FileType } = require("../../../utils");
+const { FileType } = require("@alfheim/utils");
 
 const scssTemplate = new FileType({ fileExtension: "scss" });
 

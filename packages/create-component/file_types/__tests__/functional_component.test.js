@@ -2,7 +2,7 @@
 
 import functionalTemplate from "../functional_component";
 
-import { FileType } from "../../../../utils";
+import { FileType } from "@alfheim/utils";
 
 import faker from "faker";
 

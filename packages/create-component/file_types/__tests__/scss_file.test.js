@@ -2,7 +2,7 @@
 
 import scssTemplate from "../scss_file";
 
-import { FileType } from "../../../../utils";
+import { FileType } from "@alfheim/utils";
 
 import faker from "faker";
 

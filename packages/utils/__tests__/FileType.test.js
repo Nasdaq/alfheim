@@ -31,7 +31,7 @@ describe(`File type`, () => {
   };
 
   it(`should be a class that takes in an arbitrary number of args in the constructor`, () => {
-    const file = new FileType(...argsGenerator());
+    const file = new FileType(argsGenerator());
     expect(typeof file).toBe("object");
     expect(file instanceof FileType).toBe(true);
   });

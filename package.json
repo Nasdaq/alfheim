@@ -51,9 +51,5 @@
     "hooks": {
       "commit-msg": "node ./hooks/commit-msg.js && commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "cross-spawn": "^6.0.5"
   }
 }
