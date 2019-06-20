@@ -22,9 +22,9 @@ const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 switch (script) {
   case "create-component":
     const result = spawn.sync(
-      "node",
+      "yo",
       nodeArgs
-        .concat(require.resolve('@alfheim/' + script))
+        .concat('@alfheim/nef-component')
         .concat(args.slice(scriptIndex + 1)),
       { stdio: "inherit" }
     );
