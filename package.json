@@ -51,5 +51,10 @@
     "hooks": {
       "commit-msg": "node ./hooks/commit-msg.js && commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

@@ -9,7 +9,7 @@
   "author": "Haldun Anil",
   "license": "MIT",
   "dependencies": {
-    "@alfheim/generator-nef-component": "^0.0.1",
+    "@alfheim/generator-nef-component": "^0.1.0",
     "chalk": "^2.4.2",
     "cross-spawn": "^6.0.5"
   }
