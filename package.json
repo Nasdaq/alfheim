@@ -1,15 +1,13 @@
 {
   "name": "alfheim",
+  "private": true,
   "version": "0.0.2",
-  "description": "A package to help create, maintain, and grow JS component libraries",
-  "bin": {
-    "alfheim": "cli.js"
-  },
+  "description": "A collection of tools to help create, maintain, and grow JS component libraries",
   "bugs": {
     "url": "https://github.com/Nasdaq/alfheim/issues"
   },
   "repository": "https://github.com/Nasdaq/alfheim.git",
-  "author": "Haldun Anil <haldun.anil@nasdaq.com>",
+  "author": "Haldun Anil",
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -33,15 +31,18 @@
     "postversion": "git push --follow-tags"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
     "@commitlint/cli": "^7.2.1",
     "@commitlint/config-conventional": "^7.1.2",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.6.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-jest": "^24.0.0",
+    "babel-loader": "^8.0.5",
     "conventional-changelog-cli": "^2.0.11",
+    "faker": "^4.1.0",
     "husky": "^1.2.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
+    "jest": "^24.0.0",
+    "lerna": "^3.15.0",
     "markdown-loader-jest": "^0.1.1",
     "prettier": "^1.15.3",
     "regenerator-runtime": "^0.13.1"
@@ -50,16 +51,5 @@
     "hooks": {
       "commit-msg": "node ./hooks/commit-msg.js && commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "cross-spawn": "^6.0.5",
-    "faker": "^4.1.0",
-    "meow": "^5.0.0",
-    "read-pkg": "^4.0.1",
-    "readline-sync": "^1.4.9"
-  },
-  "peerDependencies": {
-    "react": "^16.6.0"
   }
 }

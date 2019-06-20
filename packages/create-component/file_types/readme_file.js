@@ -1,6 +1,6 @@
 "use strict";
 
-const { FileType } = require("../../../utils");
+const { FileType } = require("@alfheim/utils");
 
 const readPkg = require("read-pkg");
 const pkg = readPkg.sync();

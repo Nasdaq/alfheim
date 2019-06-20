@@ -7,10 +7,11 @@ process.on("unhandledRejection", err => {
   throw err;
 });
 
-const log = console.log;
 const chalk = require("chalk");
 const spawn = require("cross-spawn");
+
 const args = process.argv.slice(2);
+const log = console.log;
 
 const scriptIndex = args.findIndex(
   x => x === "init" || x === "create-component"
@@ -23,7 +24,7 @@ switch (script) {
     const result = spawn.sync(
       "node",
       nodeArgs
-        .concat(require.resolve("./scripts/" + script))
+        .concat(require.resolve('@alfheim/' + script))
         .concat(args.slice(scriptIndex + 1)),
       { stdio: "inherit" }
     );

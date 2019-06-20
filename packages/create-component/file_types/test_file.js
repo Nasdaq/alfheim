@@ -1,8 +1,6 @@
 "use strict";
 
-const faker = require("faker");
-
-const { FileType, camelCaseToDash } = require("../../../utils");
+const { camelCaseToDash, FileType } = require("@alfheim/utils");
 
 // create a subclass
 class TestFileType extends FileType {
@@ -73,6 +71,8 @@ import { ${p => p.imports} } from "enzyme";
 
 import ${p => p.componentName} from "./";
 
+import faker from "faker";
+
 describe("${p => p.componentName}", () => {
   let props; 
   ${p =>
@@ -89,11 +89,11 @@ describe("${p => p.componentName}", () => {
 
   beforeEach(() => {
     props = {
-      children: <div>${() => faker.lorem.paragraph()}</div>,
-      className: "${() => faker.random.word()}",
-      id: "${() => faker.random.word()}",
-      name: "${() => faker.random.word()}",
-      style: { color: "${() => faker.internet.color()}" }
+      children: faker.lorem.paragraph(),
+      className: faker.random.word(),
+      id: faker.random.word(),
+      name: faker.random.word(),
+      style: { color: faker.internet.color() }
       
     };
     ${p =>

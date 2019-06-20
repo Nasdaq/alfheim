@@ -1,6 +1,6 @@
 "use strict";
 
-const { FileType, camelCaseToDash } = require("../../../utils");
+const { camelCaseToDash, FileType } = require("@alfheim/utils");
 
 const functionalTemplate = new FileType({ filename: "index.tsx" });
 

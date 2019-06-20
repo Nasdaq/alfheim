@@ -2,7 +2,7 @@
 
 import testTemplate from "../test_file";
 
-import { FileType } from "../../../../utils";
+import { FileType } from "@alfheim/utils";
 
 import faker from "faker";
 
