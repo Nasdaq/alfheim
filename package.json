@@ -1,7 +1,7 @@
 {
   "name": "alfheim",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A collection of tools to help create, maintain, and grow JS component libraries",
   "bugs": {
     "url": "https://github.com/Nasdaq/alfheim/issues"
@@ -28,7 +28,9 @@
     "test:ci": "CI=true jest --env=jsdom --config=jest.config.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "version": "npm run changelog && git add CHANGELOG.md",
-    "postversion": "git push --follow-tags"
+    "postversion": "git push --follow-tags",
+    "lerna:canary": "lerna publish --yes --canary",
+    "lerna:publish": "lerna publish --yes"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
