@@ -1,5 +1,22 @@
 <a name="0.1.0"></a>
-# 0.1.0 (2019-06-24)
+# [0.1.0](https://github.com/Nasdaq/alfheim/compare/v0.0.1...v0.1.0) (2019-06-24)
+
+
+### Bug Fixes
+
+* various syntax errors and unused imports ([108b0b2](https://github.com/Nasdaq/alfheim/commit/108b0b2))
+
+
+### Features
+
+* add yeoman generators for each individual component type ([cdf817f](https://github.com/Nasdaq/alfheim/commit/cdf817f))
+* configure travis ([e5f70fe](https://github.com/Nasdaq/alfheim/commit/e5f70fe))
+* set up publish config ([c02d7e3](https://github.com/Nasdaq/alfheim/commit/c02d7e3))
+
+
+
+<a name="0.0.1"></a>
+## [0.0.1](https://github.com/Nasdaq/alfheim/compare/58ae080...v0.0.1) (2019-06-12)
 
 
 ### Bug Fixes
@@ -18,9 +35,6 @@
 * **create-component:** replace file_types ([#1](https://github.com/Nasdaq/alfheim/issues/1)) ([12b974a](https://github.com/Nasdaq/alfheim/commit/12b974a))
 * **create-component:** replace readlineSync question ([#1](https://github.com/Nasdaq/alfheim/issues/1)) ([14b78c0](https://github.com/Nasdaq/alfheim/commit/14b78c0))
 * add lerna.json to root ([2358d63](https://github.com/Nasdaq/alfheim/commit/2358d63))
-* add yeoman generators for each individual component type ([cdf817f](https://github.com/Nasdaq/alfheim/commit/cdf817f))
-* configure travis ([e5f70fe](https://github.com/Nasdaq/alfheim/commit/e5f70fe))
-* set up publish config ([c02d7e3](https://github.com/Nasdaq/alfheim/commit/c02d7e3))
 
 
 
