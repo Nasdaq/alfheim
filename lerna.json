@@ -5,7 +5,6 @@
   "npmClient": "yarn",
   "command": {
     "publish": {
-      "message": "chore(release): publish 🎉",
       "conventionalCommits": true
     }
   },
