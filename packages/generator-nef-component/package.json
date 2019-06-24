@@ -1,6 +1,6 @@
 {
   "name": "@alfheim/generator-nef-component",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Yeoman generator for basic NEF component",
   "files": [
     "app"
@@ -16,7 +16,7 @@
     "@alfheim/generator-nef-readme": "^0.1.0",
     "@alfheim/generator-nef-stories": "^0.1.1",
     "@alfheim/generator-nef-styles": "^0.1.0",
-    "@alfheim/generator-nef-tests": "^0.1.0",
+    "@alfheim/generator-nef-tests": "^0.1.2",
     "yeoman-generator": "^4.0.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@alfheim/generator-nef-tests",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Yeoman generator for basic NEF component testing suite",
   "files": [
     "app"
