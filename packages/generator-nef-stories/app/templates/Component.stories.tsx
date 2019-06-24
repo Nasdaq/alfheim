@@ -6,7 +6,7 @@ import <%= name %>Readme from "./README.md";
 
 import <%= name %> from ".";
 
-const <%= name %>Stories = storiesOf(<%= name %>, module);
+const <%= name %>Stories = storiesOf("<%= name %>", module);
 
 // add the knobs as a decorator and readme as a param
 <%= name %>Stories.addDecorator(withKnobs).addParameters({
