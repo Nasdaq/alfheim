@@ -23,3 +23,9 @@ deploy:
   on:
     node: "10"
     branch: master
+notifications:
+  email:
+    recipients:
+    - ${GITHUB_EMAIL}
+    on_success: change
+    on_failure: always
