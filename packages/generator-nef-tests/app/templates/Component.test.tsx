@@ -1,11 +1,10 @@
 import { <%= enabled %> } from "enzyme";
 import React from "react";
+import faker from "faker";
 
 import Styled<%= name %> from "./<%= name %>.styles";
 
 import <%= name %> from ".";
-
-import faker from "faker";
 
 describe("<%= name %>", () => {
   let props;
@@ -20,7 +19,7 @@ describe("<%= name %>", () => {
   <%_ } -%>
 
   <%_ if (mount) { -%>
-  const mountedTestComponent = () => {
+  const mountTestComponent = () => {
     if (!mounted<%= name %>) {
       mounted<%= name %> = mount(<<%= name %> {...props} />);
     }
@@ -29,7 +28,7 @@ describe("<%= name %>", () => {
   <%_ } -%>
 
   <%_ if (render) { -%>
-  const shallowTestComponent = () => {
+  const renderTestComponent = () => {
     if (!rendered<%= name %>) {
       rendered<%= name %> = render(<<%= name %> {...props} />);
     }
