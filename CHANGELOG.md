@@ -4,6 +4,7 @@
 
 ### Bug Fixes
 
+* syntax and linting issues with with the testing template ([878a1fd](https://github.com/Nasdaq/alfheim/commit/878a1fd))
 * various syntax errors and unused imports ([108b0b2](https://github.com/Nasdaq/alfheim/commit/108b0b2))
 
 
