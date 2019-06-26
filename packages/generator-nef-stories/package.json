@@ -5,7 +5,12 @@
   "files": [
     "app"
   ],
-  "repository": "https://github.com/Nasdaq/alfheim.git",
+  "homepage": "https://github.com/Nasdaq/alfheim/tree/master/packages/generator-nef-stories",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nasdaq/alfheim.git",
+    "directory": "packages/generator-nef-stories"
+  },
   "author": "Haldun Anil",
   "license": "MIT",
   "keywords": [

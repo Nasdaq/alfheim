@@ -5,7 +5,12 @@
   "bin": {
     "alfheim": "./index.js"
   },
-  "repository": "https://github.com/Nasdaq/alfheim.git",
+  "homepage": "https://github.com/Nasdaq/alfheim/tree/master/packages/cli",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nasdaq/alfheim.git",
+    "directory": "packages/cli"
+  },
   "author": "Haldun Anil",
   "license": "MIT",
   "dependencies": {
