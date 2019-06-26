@@ -1,5 +1,5 @@
 <a name="0.1.0"></a>
-# [0.1.0](https://github.com/Nasdaq/alfheim/compare/v0.0.1...v0.1.0) (2019-06-24)
+# [0.1.0](https://github.com/Nasdaq/alfheim/compare/v0.0.1...v0.1.0) (2019-06-26)
 
 
 ### Bug Fixes
@@ -12,6 +12,7 @@
 
 * add yeoman generators for each individual component type ([cdf817f](https://github.com/Nasdaq/alfheim/commit/cdf817f))
 * configure travis ([e5f70fe](https://github.com/Nasdaq/alfheim/commit/e5f70fe))
+* improve stories generator template syntax ([1fc5469](https://github.com/Nasdaq/alfheim/commit/1fc5469))
 * set up publish config ([c02d7e3](https://github.com/Nasdaq/alfheim/commit/c02d7e3))
 
 
