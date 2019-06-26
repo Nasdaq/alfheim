@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-stories@0.1.1...@alfheim/generator-nef-stories@0.3.0) (2019-06-26)
+
+
+### Features
+
+* improve stories generator template syntax ([1fc5469](https://github.com/Nasdaq/alfheim/commit/1fc5469))
+
+
+
+
+
 # [0.2.0](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-stories@0.1.1...@alfheim/generator-nef-stories@0.2.0) (2019-06-26)
 
 
