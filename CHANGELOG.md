@@ -1,10 +1,11 @@
 <a name="0.1.0"></a>
-# [0.1.0](https://github.com/Nasdaq/alfheim/compare/v0.0.1...v0.1.0) (2019-06-26)
+# [0.1.0](https://github.com/Nasdaq/alfheim/compare/v0.0.1...v0.1.0) (2019-08-16)
 
 
 ### Bug Fixes
 
 * syntax and linting issues with with the testing template ([878a1fd](https://github.com/Nasdaq/alfheim/commit/878a1fd))
+* use `marked` to parse README files into addon-info ([e81f564](https://github.com/Nasdaq/alfheim/commit/e81f564))
 * various syntax errors and unused imports ([108b0b2](https://github.com/Nasdaq/alfheim/commit/108b0b2))
 
 
