@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react";
-import marked from "marked";
-import React from "react";
 import { withKnobs } from "@storybook/addon-knobs/react";
+import React from "react";
+import marked from "marked";
 
 import <%= name %>Readme from "./README.md";
 
