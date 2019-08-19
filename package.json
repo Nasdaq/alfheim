@@ -24,8 +24,8 @@
     "typescript"
   ],
   "scripts": {
-    "test": "nyc mocha 'packages/**/*.test.js'",
-    "test:ci": "nyc mocha 'packages/**/*.test.js' --bail",
+    "test": "nyc mocha 'packages/**/*.test.js' --timeout 10000",
+    "test:ci": "nyc mocha 'packages/**/*.test.js' --bail --timeout 10000",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "version": "npm run changelog && git add CHANGELOG.md",
