@@ -95,7 +95,7 @@ describe(`generator-nef-index`, () => {
 
     it(`should nest the component folder into that path`, () => {
       assert.file(
-        path.join(__dirname, `tmp/${relPath}/${componentName}/index.tsx`)
+        path.join(__dirname, `tmp/${relPath}${componentName}/index.tsx`)
       );
     });
   });
