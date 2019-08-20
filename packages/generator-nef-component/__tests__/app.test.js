@@ -2,6 +2,7 @@ const path = require("path");
 const helpers = require("yeoman-test");
 const assert = require("yeoman-assert");
 const rimraf = require("rimraf");
+const sinon = require("sinon");
 
 describe(`generator-nef-component`, () => {
   const componentName = "Test";
@@ -81,9 +82,19 @@ describe(`generator-nef-component`, () => {
           options["mount-tests"] = false;
           options["render-tests"] = false;
           options["shallow-tests"] = false;
+          sinon.stub(process, "exit");
+
+          return run(options);
         });
 
-        // todo
+        afterEach(() => {
+          process.exit.restore();
+        });
+
+        it(`should process exit with code 1`, () => {
+          sinon.assert.called(process.exit);
+          sinon.assert.calledWith(process.exit, 1);
+        });
       });
     });
 
@@ -129,9 +140,19 @@ describe(`generator-nef-component`, () => {
           options["mount-tests"] = false;
           options["render-tests"] = false;
           options["shallow-tests"] = false;
+          sinon.stub(process, "exit");
+
+          return run(options);
         });
 
-        // todo
+        afterEach(() => {
+          process.exit.restore();
+        });
+
+        it(`should process exit with code 1`, () => {
+          sinon.assert.called(process.exit);
+          sinon.assert.calledWith(process.exit, 1);
+        });
       });
     });
   });
@@ -184,9 +205,19 @@ describe(`generator-nef-component`, () => {
           options["mount-tests"] = false;
           options["render-tests"] = false;
           options["shallow-tests"] = false;
+          sinon.stub(process, "exit");
+
+          return run(options);
         });
 
-        // todo
+        afterEach(() => {
+          process.exit.restore();
+        });
+
+        it(`should process exit with code 1`, () => {
+          sinon.assert.called(process.exit);
+          sinon.assert.calledWith(process.exit, 1);
+        });
       });
     });
 
@@ -232,9 +263,19 @@ describe(`generator-nef-component`, () => {
           options["mount-tests"] = false;
           options["render-tests"] = false;
           options["shallow-tests"] = false;
+          sinon.stub(process, "exit");
+
+          return run(options);
         });
 
-        // todo
+        afterEach(() => {
+          process.exit.restore();
+        });
+
+        it(`should process exit with code 1`, () => {
+          sinon.assert.called(process.exit);
+          sinon.assert.calledWith(process.exit, 1);
+        });
       });
     });
   });

@@ -51,6 +51,7 @@
     "prettier": "^1.15.3",
     "regenerator-runtime": "^0.13.1",
     "rimraf": "^3.0.0",
+    "sinon": "^7.4.1",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^2.0.0"
   },
