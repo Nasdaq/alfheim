@@ -17,6 +17,8 @@
 
 This package is part of the battery used to create new components for the Nasdaq Experience Framework. This package creates an `index.tsx` file, which contains the component. 
 
+> _Note: It is recommended that you install and use [`generator-nef-component`](https://github.com/Nasdaq/alfheim/tree/9-add-readme-file/packages/generator-nef-component) rather than installing this package directly, unless you need to modify the individual file generators._
+
 By default, a component named `Test` created using this generator looks as follows:
 
 ```typescript
@@ -56,13 +58,13 @@ export default Test;
 To install, simply run:
 
 ```
-yarn add @alfheim/cli --dev
+yarn add @alfheim/generator-nef-index --dev
 ```
 
 or
 
 ```
-npm install @alfheim/cli --dev 
+npm install @alfheim/generator-nef-index --dev 
 ```
 
 ## Contributing
