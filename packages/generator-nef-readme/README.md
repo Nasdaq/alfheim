@@ -17,6 +17,8 @@
 
 This package is part of the battery used to create new components for the Nasdaq Experience Framework. This package creates an `README.md` file, which provides documentation for the component. 
 
+> _Note: It is recommended that you install and use [`generator-nef-component`](https://github.com/Nasdaq/alfheim/tree/9-add-readme-file/packages/generator-nef-component) rather than installing this package directly, unless you need to modify the individual file generators._
+
 A README file created for a component named `Test` using this generator looks as follows:
 
 ⚠️ ⚠️ ⚠️ *BEGIN README HERE* ⚠️ ⚠️ ⚠️
@@ -49,7 +51,7 @@ See `Story` tab on the right.
 | `name`              | string                             | -            | -          | id to be passed to the DOM                         |
 | `id`                | string                             | -            | -          | name to be passed to the DOM                       |
 
-⚠️ ⚠️ ⚠️ END README HERE ⚠️ ⚠️ ⚠️
+⚠️ ⚠️ ⚠️ *END README HERE* ⚠️ ⚠️ ⚠️
 
 ## Getting started
 
