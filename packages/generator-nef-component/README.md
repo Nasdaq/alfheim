@@ -4,7 +4,7 @@
   <a href="https://travis-ci.org/Nasdaq/alfheim">
     <img alt="Travis" src="https://img.shields.io/travis/Nasdaq/alfheim/master.svg">
   </a>
-  <a href="https://www.npmjs.com/package/@alfheim/cli">
+  <a href="https://www.npmjs.com/package/@alfheim/generator-nef-component">
     <img alt="npm (scoped with tag)" src="https://img.shields.io/npm/v/@alfheim/generator-nef-component/latest">
   </a>
   <a href="https://github.com/Nasdaq/alfheim/blob/master/LICENSE">
