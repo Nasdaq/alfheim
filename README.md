@@ -41,6 +41,19 @@ Each component should be passed as an argument to `alfheim create-component`. Fo
 yarn alfheim create-component MyComponent AnotherComponent
 ```
 
+When a component is created, it will have the following directory structure:
+
+```
+⊢ src/
+  ⊢ components/
+    ⊢ MyComponent/
+      ⊢ index.tsx
+      ⊢ MyComponent.styles.tsx
+      ⊢ MyComponent.test.tsx
+      ⊢ MyComponent.stories.tsx
+      ⊢ README.md
+```
+
 In addition, `alfheim create-component` supports the following options:
 
 - [`--parent <dir>` or `-p <dir>`](#--parent)
@@ -52,15 +65,67 @@ In addition, `alfheim create-component` supports the following options:
 
 #### `--parent`
 
+Use this when you want to nest a component(s) inside another component. The typical use case for this is when you don't intend to use the component(s) outside the scope of the parent. As such, component(s) nested inside `parent` component(s) should not be exported globally. When using this flag, the directory structure will look as follows:
+
+```
+⊢ src/
+  ⊢ components/
+    ⊢ Parent/
+      ⊢ index.tsx
+      ⊢ ...
+      ⊢ components/
+        ⊢ Child/
+          ⊢ index.tsx
+          ⊢ Child.styles.tsx
+          ⊢ Child.test.tsx
+          ⊢ Child.stories.tsx
+          ⊢ README.md
+```
+
 #### `--class-component`
+
+Pass this flag when you want the outputted component to be a class-based React component. By default, the value of this flag is set to `false` and it is recommended that you only use this flag when creating a component that has any of the following requirements:
+- needs to access lifecycle methods (e.g. `componentDidMount`, `componentDidUpdate`, etc.)
+- needs to have state
+- needs to have custom methods and event handlers
+
+Note that in many cases, you can also accomplish the above by using [React hooks](https://reactjs.org/docs/hooks-intro.html) and forego the need to use a class component altogether.
 
 #### `--enable-jsx`
 
+By default, the styles file created will appear like this:
+
+```typescript
+import styled from 'styled-components';
+
+const StyledExampleComponent = styled.div``;
+
+export default StyledExampleComponent;
+```
+
+This may become an issue with more complex components that receive custom props, as `styled-components` simply forwards all props it receives to the DOM, potentially resulting in console error messages about unrecognized props. By using the `--enable-jsx` flag, your styled component will instead take the following appearance:
+
+```typescript
+import styled from 'styled-components';
+
+const StyledExampleComponent = styled(({ ...props }) => <div {...props} />)``;
+
+export default StyledExampleComponent;
+```
+
+Using this syntax, you can prevent the props you need in the styled-component from being passed down to the DOM by including it/them in the props destructuring. 
+
 #### `--no-mount-tests`
+
+Use this flag to prevent the import of enzyme's `mount` method and all associated setup work. Useful when your component is very low-level and doesn't need integration testing.
 
 #### `--no-render-tests`
 
+Use this flag to prevent the import of enzyme's `render` method and all associated setup work. Useful when your component is very low-level and doesn't need integration testing.
+
 #### `--no-shallow-tests`
+
+Use this flag to prevent the import of enzyme's `shallow` method and all associated setup work. Useful when your component is very high-level and you're primarily looking to do integration testing.
 
 ## Contributing
 
