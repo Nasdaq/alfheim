@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-stories@0.3.2...@alfheim/generator-nef-stories@0.4.0) (2019-08-20)
+
+
+### Features
+
+* add test for `generator-nef-stories` ([#13](https://github.com/Nasdaq/alfheim/issues/13)) ([69c7b02](https://github.com/Nasdaq/alfheim/commit/69c7b02))
+* add tests for `generator-nef-component` ([#13](https://github.com/Nasdaq/alfheim/issues/13)) ([0507ba2](https://github.com/Nasdaq/alfheim/commit/0507ba2))
+
+
+
+
+
 ## [0.3.2](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-stories@0.3.1...@alfheim/generator-nef-stories@0.3.2) (2019-08-16)
 
 

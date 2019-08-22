@@ -1,6 +1,6 @@
 {
   "name": "@alfheim/generator-nef-component",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "Yeoman generator for basic NEF component",
   "files": [
     "app"
@@ -17,11 +17,11 @@
     "yeoman-generator"
   ],
   "dependencies": {
-    "@alfheim/generator-nef-index": "^0.1.2",
-    "@alfheim/generator-nef-readme": "^0.1.1",
-    "@alfheim/generator-nef-stories": "^0.3.2",
-    "@alfheim/generator-nef-styles": "^0.1.1",
-    "@alfheim/generator-nef-tests": "^0.1.4",
+    "@alfheim/generator-nef-index": "^0.2.0",
+    "@alfheim/generator-nef-readme": "^0.2.0",
+    "@alfheim/generator-nef-stories": "^0.4.0",
+    "@alfheim/generator-nef-styles": "^0.2.0",
+    "@alfheim/generator-nef-tests": "^0.2.0",
     "yeoman-generator": "^4.0.1"
   }
 }

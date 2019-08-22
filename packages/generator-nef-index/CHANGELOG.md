@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-index@0.1.2...@alfheim/generator-nef-index@0.2.0) (2019-08-20)
+
+
+### Features
+
+* add tests for `generator-nef-component` ([#13](https://github.com/Nasdaq/alfheim/issues/13)) ([0507ba2](https://github.com/Nasdaq/alfheim/commit/0507ba2))
+* add tests for `generator-nef-readme` ([#13](https://github.com/Nasdaq/alfheim/issues/13)) ([bcb55a6](https://github.com/Nasdaq/alfheim/commit/bcb55a6))
+* update testing config and add tests for `nef-index` ([#13](https://github.com/Nasdaq/alfheim/issues/13)) ([d9b812d](https://github.com/Nasdaq/alfheim/commit/d9b812d))
+
+
+
+
+
 ## [0.1.2](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-index@0.1.1...@alfheim/generator-nef-index@0.1.2) (2019-06-26)
 
 **Note:** Version bump only for package @alfheim/generator-nef-index
