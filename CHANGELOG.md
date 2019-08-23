@@ -1,4 +1,4 @@
-# [0.1.0](https://github.com/Nasdaq/alfheim/compare/v0.0.1...v0.1.0) (2019-08-20)
+# 0.1.0 (2019-08-23)
 
 
 ### Bug Fixes
@@ -23,17 +23,6 @@
 * run mocha when committing ([#13](https://github.com/Nasdaq/alfheim/issues/13)) ([2e6eb6b](https://github.com/Nasdaq/alfheim/commit/2e6eb6b))
 * set up publish config ([c02d7e3](https://github.com/Nasdaq/alfheim/commit/c02d7e3))
 * update testing config and add tests for `nef-index` ([#13](https://github.com/Nasdaq/alfheim/issues/13)) ([d9b812d](https://github.com/Nasdaq/alfheim/commit/d9b812d))
-
-
-
-## [0.0.1](https://github.com/Nasdaq/alfheim/compare/2b9836a...v0.0.1) (2019-06-12)
-
-
-### Features
-
-* **alfheim:** create top level utils ([#1](https://github.com/Nasdaq/alfheim/issues/1)) ([2b9836a](https://github.com/Nasdaq/alfheim/commit/2b9836a))
-* **create-component:** replace file_types ([#1](https://github.com/Nasdaq/alfheim/issues/1)) ([12b974a](https://github.com/Nasdaq/alfheim/commit/12b974a))
-* add lerna.json to root ([2358d63](https://github.com/Nasdaq/alfheim/commit/2358d63))
 
 
 
