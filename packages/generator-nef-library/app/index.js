@@ -423,7 +423,7 @@ module.exports = class extends Generator {
   }
 
   _generateCommitConfig() {
-    const { host, name } = this.answers;
+    const { host, name, version } = this.answers;
 
     // generate commitlint config file
     this.fs.copyTpl(
@@ -436,6 +436,17 @@ module.exports = class extends Generator {
       this.templatePath("./conventional-changelog.json"),
       this.destinationPath("conventional-changelog.json"),
       { host, name: name.replace(/[\s\r\n]+/g, "-") }
+    );
+
+    // generate a basic changelog
+    this.fs.copyTpl(
+      this.templatePath("./CHANGELOG.md"),
+      this.destinationPath("CHANGELOG.md"),
+      {
+        date: new Date().toISOString().split("T")[0],
+        name,
+        version
+      }
     );
   }
 };
