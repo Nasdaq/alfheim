@@ -486,4 +486,40 @@ module.exports = class extends Generator {
       );
     }
   }
+
+  _generateBasicSetupConfig() {
+    const { name, typescript } = this.answers;
+
+    // rollup config
+    this.fs.copyTpl(
+      this.templatePath("./rollup.config.js"),
+      this.destinationPath("rollup.config.js"),
+      { name, typescript }
+    );
+
+    // basic travis.ci file
+    this.fs.copyTpl(
+      this.templatePath("./.travis.yml"),
+      this.destinationPath(".travis.yml")
+    );
+
+    // readme file
+    const asciiName = figlet.textSync(name, {
+      font: "ANSI Shadow",
+      horizontalLayout: "default",
+      verticalLayout: "default"
+    });
+
+    this.fs.copyTpl(
+      this.templatePath("./README.md"),
+      this.destinationPath(`README.md`),
+      { name, asciiName }
+    );
+
+    // an index file as entry point into the lib
+    this.fs.copyTpl(
+      this.templatePath("./src/index.js"),
+      this.destinationPath(`src/index.${typescript ? "ts" : "js"}`)
+    );
+  }
 };
