@@ -97,6 +97,12 @@ module.exports = class extends Generator {
         default: "Yarn"
       },
       {
+        type: "input",
+        name: "host",
+        message: "What is your repository host?",
+        default: "https://github.com"
+      },
+      {
         type: "confirm",
         name: "typescript",
         message: "Use TypeScript?",
@@ -413,6 +419,23 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath(`./${dir}/welcome.jsx`),
       this.destinationPath(`${dir}/welcome.${typescript ? "tsx" : "jsx"}`)
+    );
+  }
+
+  _generateCommitConfig() {
+    const { host, name } = this.answers;
+
+    // generate commitlint config file
+    this.fs.copyTpl(
+      this.templatePath("./commitlint.config.js"),
+      this.destinationPath("commitlint.config.js")
+    );
+
+    // generate conventional config config json
+    this.fs.copyTpl(
+      this.templatePath("./conventional-changelog.json"),
+      this.destinationPath("conventional-changelog.json"),
+      { host, name: name.replace(/[\s\r\n]+/g, "-") }
     );
   }
 };
