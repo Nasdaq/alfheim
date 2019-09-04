@@ -193,6 +193,7 @@ module.exports = class extends Generator {
 
     // add dev dependencies
     const baseDevDependencies = {
+      "@alfheim/cli": "^0.2.0",
       "@babel/core": "^7.1.2",
       "@babel/helper-module-imports": "^7.0.0",
       "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
