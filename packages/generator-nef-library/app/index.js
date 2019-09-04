@@ -1,12 +1,10 @@
 "use strict";
 
 const Generator = require("yeoman-generator");
+const figlet = require("figlet");
+const validateNpmPkgName = require("validate-npm-package-name");
 
 module.exports = class extends Generator {
-  constructor(args, opts) {
-    super(args, opts);
-  }
-
   initializing() {
     if (this.args.length > 1) {
       console.error(
@@ -26,17 +24,15 @@ module.exports = class extends Generator {
     };
 
     const validateName = value => {
-      const atLength = (value.match(/[@]/g) || []).length;
-      const slashLength = (value.match(/[\/]/g) || []).length;
+      const result = validateNpmPkgName(value);
 
-      if (atLength > 1) {
-        return "You may only have 1 '@' symbol at the beginning.";
-      } else if (atLength === 1 && value.indexOf("@") !== 0) {
-        return "The '@' symbol can only be used at the beginning";
-      } else if (value.length === 0) {
-        return "You must enter a valid name.";
-      } else if (slashLength > 1) {
-        return "You can only use slash once in the name.";
+      if (!result.validForNewPackages) {
+        const errors = result.errors || [];
+        const warnings = result.warnings || [];
+
+        const merged = [...errors, ...warnings];
+
+        return merged.join("\n>> ");
       }
 
       return true;
@@ -137,7 +133,7 @@ module.exports = class extends Generator {
 
     // add basics
     const pkgJson = {
-      name: name.replace(/[\s\r\n]+/g, "-"),
+      name,
       version,
       description,
       main: `dist/${simpleName}.min.js`,
@@ -434,7 +430,7 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath("./conventional-changelog.json"),
       this.destinationPath("conventional-changelog.json"),
-      { host, name: name.replace(/[\s\r\n]+/g, "-") }
+      { host, name }
     );
 
     // generate a basic changelog
