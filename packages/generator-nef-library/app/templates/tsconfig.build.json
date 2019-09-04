@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "module": "ES6",
+    "target": "ES6",
+    "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "sourceMap": true,
+    "allowJs": false,
+    "jsx": "react",
+    "rootDir": "src/",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "src/**/*.stories.*",
+    "node_modules",
+    "build",
+    "scripts",
+    "es",
+    "lib",
+    "tests/**",
+    ".storybook",
+    ".idea",
+    ".html",
+    "src/**/*.test.*",
+    "rollup.config.js"
+  ]
+}

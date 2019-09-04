@@ -172,8 +172,7 @@ module.exports = class extends Generator {
 
     const typescriptScripts = {
       build: "rollup -c && npm run build:ts",
-      "build:ts":
-        "tsc --p tsconfig.build.json && cp -r ./src/@types ./lib/ && cp -r ./src/styles/gif ./lib/styles/ && cp -r ./src/styles/theme/fonts ./lib/styles/theme/",
+      "build:ts": "tsc --p tsconfig.build.json && cp -r ./src/@types ./lib/",
       lint: "eslint src/ --ext .ts,.tsx --fix",
       "lint:ci": "eslint src/ --ext .ts,.tsx --quiet"
     };
@@ -448,5 +447,47 @@ module.exports = class extends Generator {
         version
       }
     );
+  }
+
+  _generateCustomTypesAndTSConfig() {
+    const { typescript } = this.answers;
+
+    if (typescript) {
+      // create tsconfig.json file
+      this.fs.copyTpl(
+        this.templatePath("./tsconfig.json"),
+        this.destinationPath("tsconfig.json")
+      );
+
+      // create tsconfig.json to be used during builds
+      this.fs.copyTpl(
+        this.templatePath("./tsconfig.build.json"),
+        this.destinationPath("tsconfig.build.json")
+      );
+
+      // create tsconfig.json to be used during tests
+      this.fs.copyTpl(
+        this.templatePath("./tsconfig.test.json"),
+        this.destinationPath("tsconfig.test.json")
+      );
+
+      // create images.d.ts file
+      this.fs.copyTpl(
+        this.templatePath("./images.d.ts"),
+        this.destinationPath("images.d.ts")
+      );
+
+      // create jest/index.d.ts file
+      this.fs.copyTpl(
+        this.templatePath("./src/@types/jest/index.d.ts"),
+        this.destinationPath("src/@types/jest/index.d.ts")
+      );
+
+      // create jest/markdown.d.ts file
+      this.fs.copyTpl(
+        this.templatePath("./src/@types/markdown/index.d.ts"),
+        this.destinationPath("src/@types/markdown/index.d.ts")
+      );
+    }
   }
 };
