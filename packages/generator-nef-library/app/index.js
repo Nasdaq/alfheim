@@ -117,4 +117,263 @@ module.exports = class extends Generator {
 
     return ordered;
   }
+
+  _generatePackageJson() {
+    const {
+      authorName,
+      authorEmail,
+      description,
+      name,
+      typescript,
+      version
+    } = this.answers;
+    const simpleName = name.replace(/[\W_]+/g, "-");
+
+    // add basics
+    const pkgJson = {
+      name: name.replace(/[\s\r\n]+/g, "-"),
+      version,
+      description,
+      main: `dist/${simpleName}.min.js`,
+      cjs: `dist/${simpleName}.cjs.js`,
+      module: `dist/${simpleName}.es.js`,
+      "jsnext:main": `dist/${simpleName}.es.js`,
+      jsdelivr: `dist/${simpleName}.es.js`,
+      unpkg: `dist/${simpleName}.min.js`,
+      cdn: `dist/${simpleName}.min.js`
+    };
+
+    // add types
+    if (typescript) {
+      pkgJson.types = "lib/index.d.ts";
+    }
+
+    pkgJson.files = ["dist", "lib", "./README.md"];
+
+    // add scripts
+    const baseScripts = {
+      start: "start-storybook -p 3000 -c .storybook",
+      prebuild: "rimraf dist && rimraf lib",
+      test: "jest",
+      "test:ci": "CI=true jest --env=jsdom --coverage",
+      "test:watch": "jest --watch",
+      "create-component": "alfheim create-component",
+      changelog:
+        "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 -c conventional-changelog.json",
+      version: "yarn changelog && git add CHANGELOG.md",
+      "build:storybook": "build-storybook -c .storybook -o .html"
+    };
+
+    const typescriptScripts = {
+      build: "rollup -c && npm run build:ts",
+      "build:ts":
+        "tsc --p tsconfig.build.json && cp -r ./src/@types ./lib/ && cp -r ./src/styles/gif ./lib/styles/ && cp -r ./src/styles/theme/fonts ./lib/styles/theme/",
+      lint: "eslint src/ --ext .ts,.tsx --fix",
+      "lint:ci": "eslint src/ --ext .ts,.tsx --quiet"
+    };
+
+    const javascriptScripts = {
+      build: "rollup -c",
+      lint: "eslint src/ --ext .js,.jsx --fix",
+      "lint:ci": "eslint src/ --ext .js,.jsx --quiet"
+    };
+
+    if (typescript) {
+      pkgJson.scripts = this._mergeSortObjects(baseScripts, typescriptScripts);
+    } else {
+      pkgJson.scripts = this._mergeSortObjects(baseScripts, javascriptScripts);
+    }
+
+    // add peer dependencies
+    pkgJson.peerDependencies = {
+      react: "^16.8.0",
+      "react-dom": "^16.8.0"
+    };
+
+    // add dev dependencies
+    const baseDevDependencies = {
+      "@babel/core": "^7.1.2",
+      "@babel/helper-module-imports": "^7.0.0",
+      "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+      "@babel/plugin-transform-runtime": "^7.1.0",
+      "@babel/preset-env": "^7.1.0",
+      "@babel/preset-react": "^7.0.0",
+      "@commitlint/cli": "^7.2.1",
+      "@commitlint/config-conventional": "^7.1.2",
+      "@storybook/addon-a11y": "^5.1.10",
+      "@storybook/addon-actions": "^5.1.3",
+      "@storybook/addon-backgrounds": "^5.1.3",
+      "@storybook/addon-console": "^1.1.0",
+      "@storybook/addon-info": "^5.1.10",
+      "@storybook/addon-knobs": "^5.1.3",
+      "@storybook/addon-storyshots": "^5.1.3",
+      "@storybook/addon-storysource": "^5.1.3",
+      "@storybook/addon-viewport": "^5.1.3",
+      "@storybook/react": "^5.1.3",
+      "@storybook/theming": "^5.1.3",
+      "babel-jest": "=24.7.1",
+      "babel-loader": "^8.0.4",
+      "clean-css-cli": "^4.2.1",
+      "conventional-changelog-cli": "^2.0.11",
+      enzyme: "=3.9.0",
+      "enzyme-adapter-react-16": "=1.12.1",
+      eslint: "^5.16.0",
+      "eslint-config-prettier": "^4.2.0",
+      "eslint-plugin-jsx-a11y": "^6.2.1",
+      "eslint-plugin-prettier": "^3.0.1",
+      "extract-text-webpack-plugin": "^3.0.2",
+      faker: "^4.1.0",
+      husky: "^1.1.0",
+      "identity-obj-proxy": "^3.0.0",
+      jest: "=24.7.1",
+      "jest-styled-components": "=6.3.1",
+      "lint-staged": "^7.3.0",
+      "markdown-loader-jest": "^0.1.1",
+      marked: "^0.7.0",
+      "npm-run-all": "^4.1.3",
+      "optimize-css-assets-webpack-plugin": "^3.2.0",
+      "postcss-url": "^8.0.0",
+      prettier: "^1.17.0",
+      react: "^16.8.0",
+      "react-dom": "^16.8.0",
+      "readline-sync": "^1.4.9",
+      rimraf: "^2.6.2",
+      rollup: "^0.66.6",
+      "rollup-plugin-babel": "^4.0.3",
+      "rollup-plugin-babel-minify": "^6.1.1",
+      "rollup-plugin-commonjs": "^9.2.0",
+      "rollup-plugin-json": "^3.1.0",
+      "rollup-plugin-node-resolve": "^3.4.0",
+      "rollup-plugin-postcss": "^1.6.2",
+      "rollup-plugin-replace": "^2.1.0",
+      "rollup-plugin-url": "^2.0.1",
+      rosie: "^2.0.1"
+    };
+
+    const typescriptDevDependencies = {
+      "@types/enzyme": "^3.1.14",
+      "@types/enzyme-adapter-react-16": "^1.0.3",
+      "@types/faker": "^4.1.5",
+      "@types/jest": "^24.0.13",
+      "@types/node": "^12.0.7",
+      "@types/react": "^16.4.14",
+      "@types/react-dom": "^16.0.8",
+      "@types/storybook__react": "^4.0.2",
+      "awesome-typescript-loader": "^5.2.1",
+      "react-docgen-typescript-loader": "^3.1.0",
+      "rollup-plugin-typescript": "^1.0.1",
+      "ts-jest": "=24.0.2",
+      tslib: "^1.9.3",
+      typescript: "^3.4.5"
+    };
+
+    if (typescript) {
+      pkgJson.devDependencies = this._mergeSortObjects(
+        baseDevDependencies,
+        typescriptDevDependencies
+      );
+    } else {
+      pkgJson.devDependencies = {
+        ...baseDevDependencies
+      };
+    }
+
+    // add author to contributors
+    pkgJson.contributors = [`${authorName} <${authorEmail}>`];
+
+    const baseJestConfig = {
+      coveragePathIgnorePatterns: [
+        "/node_modules/",
+        "/tests/",
+        "/styles/",
+        "(/test/.*|\\.styles)\\.(ts|tsx|js|jsx)$"
+      ],
+      coverageDirectory: "<rootDir>/coverage/",
+      coverageThreshold: {
+        global: {
+          branches: 90,
+          functions: 90,
+          lines: 95,
+          statements: 95
+        }
+      },
+      verbose: true,
+      testPathIgnorePatterns: ["/node_modules/", "/lib/", "/es/"],
+      moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
+      moduleNameMapper: {
+        "\\.(mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+        "\\.(css|less|scss|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)$":
+          "identity-obj-proxy"
+      }
+    };
+
+    const typescriptJestConfig = {
+      setupFilesAfterEnv: ["<rootDir>/tests/jest.setup.ts"],
+      globals: {
+        "ts-jest": {
+          tsConfig: "tsconfig.test.json"
+        }
+      },
+      transform: {
+        "^.+\\.js$": "<rootDir>/tests/jest.transform.ts",
+        "^.+\\.md?$": "markdown-loader-jest",
+        ".(ts|tsx)": "ts-jest"
+      },
+      testRegex: "(/test/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$",
+      moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"]
+    };
+
+    const javascriptJestConfig = {
+      setupFilesAfterEnv: ["<rootDir>/tests/jest.setup.js"],
+      transform: {
+        "^.+\\.js$": "<rootDir>/tests/jest.transform.js",
+        "^.+\\.md?$": "markdown-loader-jest"
+      },
+      testRegex: "(/test/.*|\\.(test|spec))\\.(js|jsx)$",
+      moduleFileExtensions: ["js", "jsx", "json"]
+    };
+
+    if (typescript) {
+      pkgJson.jest = this._mergeSortObjects(
+        baseJestConfig,
+        typescriptJestConfig
+      );
+    } else {
+      pkgJson.jest = this._mergeSortObjects(
+        baseJestConfig,
+        javascriptJestConfig
+      );
+    }
+
+    // define husky config
+    pkgJson.husky = {
+      hooks: {
+        "pre-commit": "lint-staged",
+        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      }
+    };
+
+    // define lint-staged config
+    if (typescript)
+      pkgJson["lint-staged"] = {
+        "src/**/*.{js,jsx,ts,tsx,json}": [
+          "yarn lint:ci",
+          "jest --bail --findRelatedTests",
+          "git add"
+        ]
+      };
+    else {
+      pkgJson["lint-staged"] = {
+        "src/**/*.{js,jsx,json}": [
+          "yarn lint:ci",
+          "jest --bail --findRelatedTests",
+          "git add"
+        ]
+      };
+    }
+
+    // write package.json
+    this.fs.extendJSON(this.destinationPath("package.json"), pkgJson);
+  }
+
 };
