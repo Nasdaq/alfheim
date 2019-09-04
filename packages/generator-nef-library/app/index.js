@@ -376,4 +376,43 @@ module.exports = class extends Generator {
     this.fs.extendJSON(this.destinationPath("package.json"), pkgJson);
   }
 
+  _generateStorybookConfig() {
+    const dir = ".storybook";
+    const { typescript } = this.answers;
+
+    // copy addons file
+    this.fs.copyTpl(
+      this.templatePath(".storybook/addons.js"),
+      this.destinationPath(`${dir}/addons.${typescript ? "ts" : "js"}`)
+    );
+
+    // copy config file
+    this.fs.copyTpl(
+      this.templatePath(`./${dir}/config.jsx`),
+      this.destinationPath(`${dir}/config.${typescript ? "tsx" : "jsx"}`),
+      { typescript }
+    );
+
+    // copy webpack config file
+    if (typescript) {
+      this.fs.copyTpl(
+        this.templatePath(`./${dir}/webpack.config.js`),
+        this.destinationPath(`${dir}/webpack.config.js`)
+      );
+    }
+
+    // copy webpack ts transformers file
+    if (typescript) {
+      this.fs.copyTpl(
+        this.templatePath(`./${dir}/webpack.ts-transformers.js`),
+        this.destinationPath(`${dir}/webpack.ts-transformers.js`)
+      );
+    }
+
+    // copy welcome file
+    this.fs.copyTpl(
+      this.templatePath(`./${dir}/welcome.jsx`),
+      this.destinationPath(`${dir}/welcome.${typescript ? "tsx" : "jsx"}`)
+    );
+  }
 };
