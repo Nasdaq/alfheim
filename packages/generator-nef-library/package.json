@@ -1,0 +1,22 @@
+{
+  "name": "generator-nef-library",
+  "version": "0.1.0",
+  "description": "Yeoman generator for NEF library using Storybook",
+  "files": [
+    "app"
+  ],
+  "homepage": "https://github.com/Nasdaq/alfheim/tree/master/packages/generator-nef-library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Nasdaq/alfheim.git",
+    "directory": "packages/generator-nef-library"
+  },
+  "author": "Haldun Anil",
+  "license": "MIT",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^4.0.1"
+  }
+}
