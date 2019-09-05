@@ -23,7 +23,7 @@ export const mapViewportSizeToPx = size => {
 
 // display helper
 const display = (type, size = "xs") => css`
-  @media (min-width: ${mapViewportSizeToPx[size]}) {
+  @media (min-width: ${mapViewportSizeToPx(size)}) {
     display: -ms- ${type}box !important;
     display: ${type} !important;
   }
@@ -31,7 +31,7 @@ const display = (type, size = "xs") => css`
 
 // wrap helper
 const wrap = (type = "wrap", size = "xs") => css`
-  @media (min-width: ${mapViewportSizeToPx[size]}) {
+  @media (min-width: ${mapViewportSizeToPx(size)}) {
     -ms-flex-wrap: ${type};
     flex-wrap: ${type};
   }
