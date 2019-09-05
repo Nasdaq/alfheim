@@ -186,6 +186,10 @@ module.exports = class extends Generator {
       pkgJson.scripts = this._mergeSortObjects(baseScripts, javascriptScripts);
     }
 
+    // add dependencies
+    pkgJson.dependencies = {
+      "styled-components": "~4.1.1"
+    };
     // add peer dependencies
     pkgJson.peerDependencies = {
       react: "^16.8.0",
