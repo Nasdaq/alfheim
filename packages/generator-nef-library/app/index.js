@@ -5,6 +5,15 @@ const figlet = require("figlet");
 const validateNpmPkgName = require("validate-npm-package-name");
 
 module.exports = class extends Generator {
+  constructor(args, optns) {
+    super(args, optns);
+
+    this.option("skip-install", {
+      description: "Skips yarn/npm install command. Useful for dry runs.",
+      type: Boolean
+    });
+  }
+
   initializing() {
     if (this.args.length > 1) {
       console.error(
@@ -642,5 +651,46 @@ module.exports = class extends Generator {
       "commit",
       '-m "First commit in my new component library!"'
     ]);
+  }
+
+  writing() {
+    // begin by initializing the git repo
+    this._initializeGitRepo();
+
+    // continue by generating a package.json file
+    this._generatePackageJson();
+
+    // create the test config
+    this._generateTestConfig();
+
+    // now create the storybook config files
+    this._generateStorybookConfig();
+
+    // next, create the commitlint config
+    this._generateCommitConfig();
+
+    // create ts config
+    this._generateCustomTypesAndTSConfig();
+
+    // create basic misc setup
+    this._generateBasicSetupConfig();
+
+    // get some basic components in there
+    this._generateBasicComponents();
+
+    // commit everything that was generated
+    this._gitCommitGeneratedFiles();
+  }
+
+  install() {
+    if (!this.options["skip-install"]) {
+      switch (this.answers["pkg-mgr"]) {
+        case "Yarn":
+          return this.yarnInstall();
+        case "NPM":
+        default:
+          return this.npmInstall();
+      }
+    }
   }
 };
