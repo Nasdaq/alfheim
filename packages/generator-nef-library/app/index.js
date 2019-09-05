@@ -218,13 +218,21 @@ module.exports = class extends Generator {
       "@storybook/addon-viewport": "^5.1.3",
       "@storybook/react": "^5.1.3",
       "@storybook/theming": "^5.1.3",
+      "@typescript-eslint/eslint-plugin": "^1.11.0",
+      "@typescript-eslint/parser": "^1.11.0",
+      "babel-eslint": "^10.0.3",
       "babel-jest": "=24.7.1",
       "babel-loader": "^8.0.4",
       "clean-css-cli": "^4.2.1",
       "conventional-changelog-cli": "^2.0.11",
       enzyme: "=3.9.0",
       "enzyme-adapter-react-16": "=1.12.1",
-      eslint: "^5.16.0",
+      eslint: "^6.3.0",
+      "eslint-config-react-app": "^5.0.1",
+      "eslint-plugin-import": "^2.18.2",
+      "eslint-plugin-jsx-a11y": "^6.2.3",
+      "eslint-plugin-react": "^7.14.3",
+      "eslint-plugin-react-hooks": "^2.0.1",
       "eslint-config-prettier": "^4.2.0",
       "eslint-plugin-jsx-a11y": "^6.2.1",
       "eslint-plugin-prettier": "^3.0.1",
@@ -495,6 +503,12 @@ module.exports = class extends Generator {
 
   _generateBasicSetupConfig() {
     const { name, typescript } = this.answers;
+
+    // .eslintrc
+    this.fs.copyTpl(
+      this.templatePath("./.eslintrc"),
+      this.destinationPath(".eslintrc")
+    );
 
     // rollup config
     this.fs.copyTpl(
