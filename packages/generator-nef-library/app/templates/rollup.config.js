@@ -1,4 +1,6 @@
+<%_ if (typescript) { -%>
 import typescript from "rollup-plugin-typescript";
+<%_ } -%>
 import nodeResolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import babel from "rollup-plugin-babel";
@@ -47,7 +49,9 @@ const createConfig = ({ output, browser = false, umd = false, env } = {}) => {
       })
     ),
     plugins: [
+      <%_ if (typescript) { -%>
       typescript({ jsx: "react", rootDir: "./src/", rootDirs: null }),
+      <%_ } -%>
       nodeResolve({
         jsnext: true
       }),
