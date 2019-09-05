@@ -55,7 +55,7 @@ module.exports = class extends Generator {
         type: "input",
         name: "name",
         message: "Your project/package name",
-        default: this.appname,
+        default: this.appname.replace(" ", "-").toLowerCase(),
         validate: validateName
       },
       {
@@ -134,6 +134,7 @@ module.exports = class extends Generator {
     // add basics
     const pkgJson = {
       name,
+      private: true,
       version,
       description,
       main: `dist/${simpleName}.min.js`,
