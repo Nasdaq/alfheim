@@ -571,4 +571,48 @@ module.exports = class extends Generator {
       this.destinationPath(`src/index.${typescript ? "ts" : "js"}`)
     );
   }
+
+  _generateBasicComponents() {
+    const { typescript } = this.answers;
+
+    // STEP 1: generate flex component
+    const flexDir = "src/components/Flex";
+
+    // component file
+    this.fs.copyTpl(
+      this.templatePath(`./${flexDir}/index.${typescript ? "tsx" : "jsx"}`),
+      this.destinationPath(`${flexDir}/index.${typescript ? "tsx" : "jsx"}`)
+    );
+
+    // style sheet
+    this.fs.copyTpl(
+      this.templatePath(
+        `./${flexDir}/Flex.styles.${typescript ? "tsx" : "jsx"}`
+      ),
+      this.destinationPath(
+        `${flexDir}/Flex.styles.${typescript ? "tsx" : "jsx"}`
+      ),
+      { typescript }
+    );
+
+    // testing file
+    this.fs.copyTpl(
+      this.templatePath(`./${flexDir}/Flex.test.jsx`),
+      this.destinationPath(`${flexDir}/Flex.test.${typescript ? "tsx" : "jsx"}`)
+    );
+
+    // stories file
+    this.fs.copyTpl(
+      this.templatePath(`./${flexDir}/Flex.stories.jsx`),
+      this.destinationPath(
+        `${flexDir}/Flex.stories.${typescript ? "tsx" : "jsx"}`
+      )
+    );
+
+    // README file
+    this.fs.copyTpl(
+      this.templatePath(`./${flexDir}/README.md`),
+      this.destinationPath(`${flexDir}/README.md`)
+    );
+  }
 };
