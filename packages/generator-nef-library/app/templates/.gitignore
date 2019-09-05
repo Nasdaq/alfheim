@@ -1,0 +1,12 @@
+/coverage
+/node_modules
+/dist
+/lib
+npm-debug.log*
+/.idea
+yarn-error.log
+/build
+.DS_store
+*.tgz
+package-lock.json
+yarn.lock

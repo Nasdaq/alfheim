@@ -107,6 +107,17 @@ module.exports = class extends Generator {
     ]);
   }
 
+  _initializeGitRepo() {
+    // run git init
+    this.spawnCommandSync("git", ["init"]);
+
+    // add .gitignore
+    this.fs.copyTpl(
+      this.templatePath(`./.gitignore`),
+      this.destinationPath(".gitignore")
+    );
+  }
+
   _mergeSortObjects(object1, object2) {
     const unordered = { ...object1, ...object2 };
     const ordered = {};
@@ -620,5 +631,16 @@ module.exports = class extends Generator {
       this.templatePath(`./${flexDir}/README.md`),
       this.destinationPath(`${flexDir}/README.md`)
     );
+  }
+
+  _gitCommitGeneratedFiles() {
+    // first add everything
+    this.spawnCommandSync("git", ["add", "."]);
+
+    // next, commit it
+    this.spawnCommandSync("git", [
+      "commit",
+      '-m "First commit in my new component library!"'
+    ]);
   }
 };
