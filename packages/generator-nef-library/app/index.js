@@ -539,6 +539,12 @@ module.exports = class extends Generator {
       this.destinationPath(".eslintrc")
     );
 
+    // .npmignore
+    this.fs.copyTpl(
+      this.templatePath("./.npmignore"),
+      this.destinationPath(".npmignore")
+    );
+
     // rollup config
     this.fs.copyTpl(
       this.templatePath("./rollup.config.js"),

@@ -1,0 +1,17 @@
+.idea/
+.storybook/
+node_modules/
+scripts/
+src/
+tests/
+.gitignore
+.travis.yml
+yarn.lock
+*/__image_snapshots__/
+*/__snapshots__/
+*/stories/
+*.stories.*
+.html/
+tsconfig.json
+tsconfig.test.json
+tslint.json
