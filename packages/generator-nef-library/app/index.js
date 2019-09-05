@@ -190,6 +190,11 @@ module.exports = class extends Generator {
     pkgJson.dependencies = {
       "styled-components": "~4.1.1"
     };
+
+    if (!typescript) {
+      pkgJson.dependencies["prop-types"] = "^15.7.2";
+    }
+
     // add peer dependencies
     pkgJson.peerDependencies = {
       react: "^16.8.0",
@@ -279,7 +284,8 @@ module.exports = class extends Generator {
       "rollup-plugin-typescript": "^1.0.1",
       "ts-jest": "=24.0.2",
       tslib: "^1.9.3",
-      typescript: "^3.4.5"
+      typescript: "^3.4.5",
+      "typescript-plugin-styled-components": "^1.4.2"
     };
 
     if (typescript) {
