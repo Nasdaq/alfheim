@@ -397,13 +397,36 @@ module.exports = class extends Generator {
     this.fs.extendJSON(this.destinationPath("package.json"), pkgJson);
   }
 
+  _generateTestConfig() {
+    const dir = "tests";
+    const { typescript } = this.answers;
+
+    // copy eslintrc
+    this.fs.copyTpl(
+      this.templatePath(`./${dir}/.eslintrc`),
+      this.destinationPath(`${dir}/.eslintrc`)
+    );
+
+    // copy setup file
+    this.fs.copyTpl(
+      this.templatePath(`./${dir}/jest.setup.js`),
+      this.destinationPath(`${dir}/jest.setup.${typescript ? "ts" : "js"}`)
+    );
+
+    // copy transform file
+    this.fs.copyTpl(
+      this.templatePath(`./${dir}/jest.transform.js`),
+      this.destinationPath(`${dir}/jest.transform.${typescript ? "ts" : "js"}`)
+    );
+  }
+
   _generateStorybookConfig() {
     const dir = ".storybook";
     const { typescript } = this.answers;
 
     // copy addons file
     this.fs.copyTpl(
-      this.templatePath(".storybook/addons.js"),
+      this.templatePath(`./${dir}/addons.js`),
       this.destinationPath(`${dir}/addons.${typescript ? "ts" : "js"}`)
     );
 
