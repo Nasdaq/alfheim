@@ -12,6 +12,11 @@ module.exports = class extends Generator {
       description: "Skips yarn/npm install command. Useful for dry runs.",
       type: Boolean
     });
+
+    this.option("skip-git", {
+      description: "Skips all git commands. Useful for dry runs.",
+      type: Boolean
+    });
   }
 
   initializing() {
@@ -117,14 +122,16 @@ module.exports = class extends Generator {
   }
 
   _initializeGitRepo() {
-    // run git init
-    this.spawnCommandSync("git", ["init"]);
+    if (!this.options["skip-git"]) {
+      // run git init
+      this.spawnCommandSync("git", ["init"]);
 
-    // add .gitignore
-    this.fs.copyTpl(
-      this.templatePath(`./.gitignore`),
-      this.destinationPath(".gitignore")
-    );
+      // add .gitignore
+      this.fs.copyTpl(
+        this.templatePath(`./.gitignore`),
+        this.destinationPath(".gitignore")
+      );
+    }
   }
 
   _mergeSortObjects(object1, object2) {
@@ -254,6 +261,7 @@ module.exports = class extends Generator {
       "enzyme-adapter-react-16": "=1.12.1",
       eslint: "^6.3.0",
       "eslint-config-react-app": "^5.0.1",
+      "eslint-plugin-flowtype": "^4.3.0",
       "eslint-plugin-import": "^2.18.2",
       "eslint-plugin-jsx-a11y": "^6.2.3",
       "eslint-plugin-react": "^7.14.3",
@@ -643,14 +651,16 @@ module.exports = class extends Generator {
   }
 
   _gitCommitGeneratedFiles() {
-    // first add everything
-    this.spawnCommandSync("git", ["add", "."]);
+    if (!this.options["skip-git"]) {
+      // first add everything
+      this.spawnCommandSync("git", ["add", "."]);
 
-    // next, commit it
-    this.spawnCommandSync("git", [
-      "commit",
-      '-m "First commit in my new component library!"'
-    ]);
+      // next, commit it
+      this.spawnCommandSync("git", [
+        "commit",
+        '-m "First commit in my new component library!"'
+      ]);
+    }
   }
 
   writing() {
