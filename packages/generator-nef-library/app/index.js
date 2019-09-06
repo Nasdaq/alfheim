@@ -2,8 +2,13 @@
 
 const Generator = require("yeoman-generator");
 const figlet = require("figlet");
-const validateNpmPkgName = require("validate-npm-package-name");
 const chalk = require("chalk");
+
+const {
+  validateRequired,
+  validateName,
+  validateVersion
+} = require("./validators");
 
 module.exports = class extends Generator {
   constructor(args, optns) {
@@ -20,51 +25,7 @@ module.exports = class extends Generator {
     });
   }
 
-  initializing() {
-    if (this.args.length > 1) {
-      console.error(
-        "You can only create one component library at a time. Please try again with only one unnamed argument."
-      );
-      process.exit(1);
-    }
-  }
-
   async prompting() {
-    const validateRequired = value => {
-      if (value.length === 0) {
-        return "You must enter a valid value.";
-      }
-
-      return true;
-    };
-
-    const validateName = value => {
-      const result = validateNpmPkgName(value);
-
-      if (!result.validForNewPackages) {
-        const errors = result.errors || [];
-        const warnings = result.warnings || [];
-
-        const merged = [...errors, ...warnings];
-
-        return merged.join("\n>> ");
-      }
-
-      return true;
-    };
-
-    const validateVersion = value => {
-      const re = new RegExp(
-        /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/
-      );
-
-      if (value.match(re)) {
-        return true;
-      }
-
-      return "Please ensure that your version follows valid semver without the 'v' character.";
-    };
-
     this.answers = await this.prompt([
       {
         type: "input",
@@ -102,7 +63,7 @@ module.exports = class extends Generator {
       },
       {
         type: "list",
-        name: "pkg-mgr",
+        name: "pkgMgr",
         message: "Use which package manager?",
         choices: ["Yarn", "NPM"],
         default: "Yarn"
@@ -708,7 +669,7 @@ module.exports = class extends Generator {
 
   install() {
     if (!this.options["skip-install"]) {
-      switch (this.answers["pkg-mgr"]) {
+      switch (this.answers.pkgMgr) {
         case "Yarn":
           return this.yarnInstall();
         case "NPM":
