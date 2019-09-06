@@ -1,0 +1,5 @@
+{
+  "all": true,
+  "reporter": ["text-lcov"],
+  "exclude": ["**/templates/**", "**/__tests__"]
+}
