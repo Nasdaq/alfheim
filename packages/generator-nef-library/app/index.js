@@ -3,6 +3,7 @@
 const Generator = require("yeoman-generator");
 const figlet = require("figlet");
 const validateNpmPkgName = require("validate-npm-package-name");
+const chalk = require("chalk");
 
 module.exports = class extends Generator {
   constructor(args, optns) {
@@ -119,6 +120,19 @@ module.exports = class extends Generator {
         default: true
       }
     ]);
+
+    // TODO: remove the following once the javascript config is fixed
+    if (!this.answers.typescript) {
+      console.error(
+        chalk.red(
+          "ERROR: There are ongoing issues with the JavaScript generator " +
+            "that results in code that doesn't build properly. " +
+            "Please use TypeScript until https://github.com/Nasdaq/alfheim/issues/19 " +
+            "is addressed."
+        )
+      );
+      process.exit(1);
+    }
   }
 
   _initializeGitRepo() {
