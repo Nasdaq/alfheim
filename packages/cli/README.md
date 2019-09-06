@@ -22,13 +22,13 @@ This is the primary package that should be installed to use the `@alfheim` libra
 To install, simply run:
 
 ```
-yarn add @alfheim/cli --dev
+yarn global add @alfheim/cli
 ```
 
 or
 
 ```
-npm install @alfheim/cli --dev 
+npm install @alfheim/cli -g 
 ```
 
 ## Contributing

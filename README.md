@@ -24,12 +24,109 @@ If something doesn’t work, please file an issue.
 To install the dependencies, simply run:
 
 ```bash
-yarn add @alfheim/cli --dev
+yarn global add @alfheim/cli
+```
+
+or alternatively, if you only want to use the `create-component` feature in an existing project, run:
+
+```bash
+yarn add --dev @alfheim/cli
 ```
 
 Read on to discover the available commands via the library.
 
-## `yarn alfheim create-component` or `npm run alfheim create-component`
+## `alfheim init`
+
+Use this command to create a new component library, fully set up to be used out of the box. When you run the command, you will be asked a series of questions to generate a library that works best according to your parameters.
+
+### Options
+
+When a component library is created using TypeScript, it will have the following directory structure:
+
+```
+⊢ .storybook/
+  ⊢ addons.ts
+  ⊢ config.tsx
+  ⊢ webpack.config.js
+  ⊢ webpack.ts-transformers.js
+  ⊢ welcome.tsx
+⊢ src/
+  ⊢ index.ts
+  ⊢ @types/
+    ⊢ jest/
+      ⊢ index.d.ts
+    ⊢ markdown/
+      ⊢ index.d.ts
+  ⊢ components/
+    ⊢ Flex/
+      ⊢ index.tsx
+      ⊢ Flex.test.tsx
+      ⊢ Flex.styles.tsx
+      ⊢ Flex.stories.tsx
+      ⊢ README.md
+⊢ tests/
+  ⊢ .eslintrc
+  ⊢ jest.setup.ts
+  ⊢ jest.transform.ts
+⊢ .eslintrc
+⊢ .gitignore -> only when --skip-git is not passed
+⊢ .npmignore  
+⊢ .travis.yml
+⊢ CHANGELOG.md
+⊢ commitlint.config.js
+⊢ conventional-changelog.json
+⊢ images.d.ts
+⊢ package.json
+⊢ README.md
+⊢ rollup.config.js
+⊢ tsconfig.build.json
+⊢ tsconfig.json
+⊢ tsconfig.test.json
+```
+
+When a component library is created using JavaScript/ES, it will have the following directory structure:
+
+```
+⊢ .storybook/
+  ⊢ addons.js
+  ⊢ config.jsx
+  ⊢ webpack.config.js
+  ⊢ webpack.ts-transformers.js
+  ⊢ welcome.jsx
+⊢ src/
+  ⊢ index.js
+  ⊢ components/
+    ⊢ Flex/
+      ⊢ index.jsx
+      ⊢ Flex.test.jsx
+      ⊢ Flex.styles.jsx
+      ⊢ Flex.stories.jsx
+      ⊢ README.md
+⊢ tests/
+  ⊢ .eslintrc
+  ⊢ jest.setup.js
+  ⊢ jest.transform.js
+⊢ .eslintrc
+⊢ .gitignore -> only when --skip-git is not passed
+⊢ .npmignore  
+⊢ .travis.yml
+⊢ CHANGELOG.md
+⊢ commitlint.config.js
+⊢ conventional-changelog.json
+⊢ package.json
+⊢ README.md
+⊢ rollup.config.js
+```
+
+#### `--skip-install`
+
+Pass this flag if you want to skip the installation of all dependencies and devDependencies at the end of file generation. This may be useful when debugging or doing a dry run. For most users, this option shouldn't be relevant.
+
+#### `--skip-git`
+
+Pass this flag when you want to skip git repo initialization and an initial commit following file generation. This is useful when running the command inside an existing project or doing a dry run.
+
+## `alfheim create-component`
 
 Use this command to create new components from a boilerplate. The generated files will contain a main component file, a stylesheet that uses `styled-components`, a testing file, a README, and a stories file for `Storybook`.
 
@@ -85,6 +182,7 @@ Use this when you want to nest a component(s) inside another component. The typi
 #### `--class-component`
 
 Pass this flag when you want the outputted component to be a class-based React component. By default, the value of this flag is set to `false` and it is recommended that you only use this flag when creating a component that has any of the following requirements:
+
 - needs to access lifecycle methods (e.g. `componentDidMount`, `componentDidUpdate`, etc.)
 - needs to have state
 - needs to have custom methods and event handlers
@@ -96,7 +194,7 @@ Note that in many cases, you can also accomplish the above by using [React hooks
 By default, the styles file created will appear like this:
 
 ```typescript
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledExampleComponent = styled.div``;
 
@@ -106,14 +204,14 @@ export default StyledExampleComponent;
 This may become an issue with more complex components that receive custom props, as `styled-components` simply forwards all props it receives to the DOM, potentially resulting in console error messages about unrecognized props. By using the `--enable-jsx` flag, your styled component will instead take the following appearance:
 
 ```typescript
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const StyledExampleComponent = styled(({ ...props }) => <div {...props} />)``;
 
 export default StyledExampleComponent;
 ```
 
-Using this syntax, you can prevent the props you need in the styled-component from being passed down to the DOM by including it/them in the props destructuring. 
+Using this syntax, you can prevent the props you need in the styled-component from being passed down to the DOM by including it/them in the props destructuring.
 
 #### `--no-mount-tests`
 
