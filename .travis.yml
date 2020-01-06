@@ -28,7 +28,7 @@ deploy:
   cleanup: false
   on:
     node_js: "10"
-    branch: tags
+    tags: true
 notifications:
   email:
     recipients:
