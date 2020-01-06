@@ -2,9 +2,7 @@ import { <%= enabled %> } from "enzyme";
 import React from "react";
 import faker from "faker";
 
-import Styled<%= name %> from "./<%= name %>.styles";
-
-import <%= name %> from ".";
+import <%= name %>, { Styled<%= name %> } from ".";
 
 describe("<%= name %>", () => {
   let props;
@@ -81,5 +79,12 @@ describe("<%= name %>", () => {
  
   <%_ if (render || mount) { -%>
   // Render / mount / integration tests begin here
+  <%_ } -%>
+
+  <%_ if (mount) { -%>
+  // snapshot tests begin here
+  it(`should always match snapshot`, () => {
+    expect(mount(<Styled<%= name %> {...props} />)).toMatchSnapshot();
+  });
   <%_ } -%>
 });

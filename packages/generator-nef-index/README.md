@@ -28,7 +28,7 @@ import StyledTest from "./Test.styles";
 
 export interface TestProps extends React.HTMLAttributes<HTMLElement> {}
 
-const Test: React.SFC<TestProps> = (props: TestProps) => (
+const Test: React.FC<TestProps> = (props: TestProps) => (
   <StyledTest {...props} />
 );
 

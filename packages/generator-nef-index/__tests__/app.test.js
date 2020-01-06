@@ -74,7 +74,7 @@ describe(`generator-nef-index`, () => {
     it(`should create a functional component`, () => {
       assert.fileContent(
         filePath,
-        `const ${componentName}: React.SFC<${componentName}Props> = (props: ${componentName}Props) => (`
+        `const ${componentName}: React.FC<${componentName}Props> = (props: ${componentName}Props) => (`
       );
     });
 

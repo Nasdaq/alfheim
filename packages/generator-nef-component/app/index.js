@@ -25,12 +25,6 @@ module.exports = class extends Generator {
       alias: "c"
     });
 
-    this.option("enable-jsx", {
-      type: Boolean,
-      description: "Indicate whether JSX should be allowed in file",
-      alias: "e"
-    });
-
     this.option("mount-tests", {
       alias: "m",
       description: "Generate mounted enzyme tests",
@@ -77,13 +71,6 @@ module.exports = class extends Generator {
     this.composeWith(require.resolve("@alfheim/generator-nef-stories/app"), {
       arguments: this.args,
       p: relativePath
-    })
-
-    // create styles file
-    this.composeWith(require.resolve("@alfheim/generator-nef-styles/app"), {
-      arguments: this.args,
-      p: relativePath,
-      e: this.options["enable-jsx"]
     })
 
     // create tests file

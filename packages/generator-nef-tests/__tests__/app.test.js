@@ -132,15 +132,8 @@ describe(`generator-nef-tests`, () => {
         assert.fileContent(filePath, `import faker from "faker";`);
       });
 
-      it(`should always import the styled component being rendered`, () => {
-        assert.fileContent(
-          filePath,
-          `import Styled${componentName} from "./${componentName}.styles";`
-        );
-      });
-
-      it(`should always import the component being tested`, () => {
-        assert.fileContent(filePath, `import ${componentName} from ".";`);
+      it(`should always import the component being tested and its styled-component variant`, () => {
+        assert.fileContent(filePath, `import ${componentName}, { Styled${componentName} } from ".";`);
       });
 
       it(`should always define a reassignable 'props' object`, () => {
