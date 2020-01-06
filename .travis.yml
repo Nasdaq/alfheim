@@ -14,7 +14,7 @@ script:
 jobs:
   include:
     - stage: version
-      if: branch = master
+      if: (NOT type IN (pull_request)) AND (branch = master)
       script: "yarn lerna version --conventional-commits --yes --create-release github"
 before_deploy:
   - git config --global user.email ${GITHUB_EMAIL}
