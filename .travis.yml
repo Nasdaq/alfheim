@@ -12,7 +12,10 @@ prepare:
   - yarn lerna bootstrap
   - yarn test:ci
 version:
-  - yarn lerna version --conventional-commits --yes --create-release github
+  script: "yarn lerna version --conventional-commits --yes --create-release github"
+  on:
+    node: "10"
+    branch: master
 before_deploy:
   - git config --global user.email ${GITHUB_EMAIL}
   - git config --global user.name ${GITHUB_USER}
@@ -29,6 +32,6 @@ deploy:
 notifications:
   email:
     recipients:
-    - ${GITHUB_EMAIL}
+      - ${GITHUB_EMAIL}
     on_success: change
     on_failure: always
