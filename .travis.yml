@@ -13,7 +13,8 @@ script:
   - yarn test:ci
 jobs:
   include:
-    - if: branch = master
+    - stage: version
+      if: branch = master
       script: "yarn lerna version --conventional-commits --yes --create-release github"
 before_deploy:
   - git config --global user.email ${GITHUB_EMAIL}
