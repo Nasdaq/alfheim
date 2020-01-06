@@ -12,7 +12,9 @@ prepare:
   - yarn lerna bootstrap
   - yarn test:ci
 version:
+  provider: script
   script: "yarn lerna version --conventional-commits --yes --create-release github"
+  skip_cleanup: true
   on:
     node: "10"
     branch: master
