@@ -19,7 +19,6 @@ describe(`generator-nef-component`, () => {
     options = {
       parent: undefined,
       "class-component": false,
-      "enable-jsx": false,
       "mount-tests": false,
       "render-tests": false,
       "shallow-tests": false
@@ -70,10 +69,6 @@ describe(`generator-nef-component`, () => {
 
         it(`should create a '<componentName>.test.tsx' file`, () => {
           assert.file(dirPath + `${componentName}.test.tsx`);
-        });
-
-        it(`should create a '<componentName>.styles.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.styles.tsx`);
         });
       });
 
@@ -128,10 +123,6 @@ describe(`generator-nef-component`, () => {
 
         it(`should create a '<componentName>.test.tsx' file`, () => {
           assert.file(dirPath + `${componentName}.test.tsx`);
-        });
-
-        it(`should create a '<componentName>.styles.ts' file`, () => {
-          assert.file(dirPath + `${componentName}.styles.ts`);
         });
       });
 
@@ -194,10 +185,6 @@ describe(`generator-nef-component`, () => {
         it(`should create a '<componentName>.test.tsx' file`, () => {
           assert.file(dirPath + `${componentName}.test.tsx`);
         });
-
-        it(`should create a '<componentName>.styles.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.styles.tsx`);
-        });
       });
 
       describe(`if none of the tests are true`, () => {
@@ -251,10 +238,6 @@ describe(`generator-nef-component`, () => {
 
         it(`should create a '<componentName>.test.tsx' file`, () => {
           assert.file(dirPath + `${componentName}.test.tsx`);
-        });
-
-        it(`should create a '<componentName>.styles.ts' file`, () => {
-          assert.file(dirPath + `${componentName}.styles.ts`);
         });
       });
 

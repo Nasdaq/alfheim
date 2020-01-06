@@ -1,10 +1,11 @@
 import React from "react";
-
-import Styled<%= name %> from "./<%= name %>.styles";
+import styled from "styled-components";
 
 export interface <%= name %>Props extends React.HTMLAttributes<HTMLElement> {}
 
-const <%= name %>: React.SFC<<%= name %>Props> = (props: <%= name %>Props) => (
+export const Styled<%= name %> = styled.div<<%= name %>Props>``;
+
+const <%= name %>: React.FC<<%= name %>Props> = (props: <%= name %>Props) => (
   <Styled<%= name %> {...props} />
 );
 
