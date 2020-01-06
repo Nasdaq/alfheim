@@ -1,5 +1,5 @@
 <h1 align="center" style="border-bottom: none;">🏞 alfheim</h1>
-<h3 align="center">A package to help create, maintain, and grow JS component libraries</h3>
+<h3 align="center">A package to help create, maintain, and grow component libraries using TypeScript</h3>
 <p align="center">
   <a href="https://travis-ci.org/Nasdaq/alfheim">
     <img alt="Travis" src="https://img.shields.io/travis/Nasdaq/alfheim/master.svg">
