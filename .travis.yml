@@ -8,11 +8,9 @@ cache:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s
   - export PATH="$HOME/.yarn/bin:$PATH"
-prepare:
+script:
   - yarn lerna bootstrap
   - yarn test:ci
-version:
-  - yarn lerna version --conventional-commits --yes --create-release github
 before_deploy:
   - git config --global user.email ${GITHUB_EMAIL}
   - git config --global user.name ${GITHUB_USER}
@@ -21,11 +19,11 @@ before_deploy:
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
 deploy:
   provider: script
-  script: "yarn lerna publish from-git --yes"
+  script: "yarn run lerna:publish"
   skip_cleanup: true
   on:
     node: "10"
-    branch: tags
+    branch: master
 notifications:
   email:
     recipients:
