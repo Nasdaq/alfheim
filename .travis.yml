@@ -8,13 +8,16 @@ cache:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s
   - export PATH="$HOME/.yarn/bin:$PATH"
-script:
+prepare:
   - yarn lerna bootstrap
   - yarn test:ci
-jobs:
-  include:
-    - if: branch = master
-      script: "yarn lerna version --conventional-commits --yes --create-release github"
+version:
+  provider: script
+  script: "yarn lerna version --conventional-commits --yes --create-release github"
+  skip_cleanup: true
+  on:
+    node: "10"
+    branch: master
 before_deploy:
   - git config --global user.email ${GITHUB_EMAIL}
   - git config --global user.name ${GITHUB_USER}
@@ -24,9 +27,9 @@ before_deploy:
 deploy:
   provider: script
   script: "yarn lerna publish from-git --yes"
-  cleanup: false
+  skip_cleanup: true
   on:
-    node_js: "10"
+    node: "10"
     branch: tags
 notifications:
   email:
