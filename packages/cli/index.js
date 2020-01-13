@@ -22,9 +22,10 @@ const nodeArgs = scriptIndex > 0 ? args.slice(0, scriptIndex) : [];
 switch (script) {
   case "create-component":
     const result = spawn.sync(
-      "yo",
-      nodeArgs
-        .concat('@alfheim/nef-component')
+      "npm",
+      ["run", "start"]
+        .concat(nodeArgs)
+        .concat("@alfheim/nef-component")
         .concat(args.slice(scriptIndex + 1)),
       { stdio: "inherit" }
     );
@@ -39,8 +40,8 @@ switch (script) {
       } else if (result.signal === "SIGTERM") {
         log(
           chalk.red(`
-             The build failed because the process exited too early. 
-             Someone might have called "kill" or "killall", or the system could 
+             The build failed because the process exited too early.
+             Someone might have called "kill" or "killall", or the system could
              be shutting down.
            `)
         );
