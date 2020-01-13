@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/Nasdaq/alfheim/compare/@alfheim/cli@0.2.2...@alfheim/cli@0.2.3) (2020-01-13)
+
+
+### Bug Fixes
+
+* add missing `yo` dependency and configure to properly use it ([5cb3211](https://github.com/Nasdaq/alfheim/commit/5cb3211))
+
+
+
+
+
 ## [0.2.2](https://github.com/Nasdaq/alfheim/compare/@alfheim/cli@0.2.1...@alfheim/cli@0.2.2) (2020-01-06)
 
 **Note:** Version bump only for package @alfheim/cli
