@@ -1,4 +1,1 @@
-module.exports = {
-  extends: ["@commitlint/config-conventional"],
-  rules: { "header-max-length": [2, "always", 280] }
-};
+module.exports = { extends: ["@commitlint/config-conventional"] };
