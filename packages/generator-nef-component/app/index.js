@@ -49,8 +49,8 @@ module.exports = class extends Generator {
 
   writing() {
     const relativePath = this.options.parent
-      ? "src/components/" + this.options.parent + "/components/"
-      : "src/components/";
+      ? "components/" + this.options.parent + "/components/"
+      : "components/";
 
     // create index file
     this.composeWith(
