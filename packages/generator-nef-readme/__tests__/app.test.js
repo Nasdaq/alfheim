@@ -42,7 +42,7 @@ describe(`generator-nef-readme`, () => {
     it(`should create a basic usage import example`, () => {
       assert.fileContent(
         filePath,
-        `import { ${componentName} } from "@nef/react";`
+        `import { ${componentName} } from "@nef/core";`
       );
     });
   });
@@ -75,7 +75,7 @@ describe(`generator-nef-readme`, () => {
     it(`should create a basic usage import example`, () => {
       assert.fileContent(
         filePath,
-        `import { ${componentName} } from "@nef/react";`
+        `import { ${componentName} } from "@nef/core";`
       );
     });
   });
