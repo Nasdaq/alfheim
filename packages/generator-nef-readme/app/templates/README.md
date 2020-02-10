@@ -9,7 +9,7 @@
 ## Usage
 
 ```javascript
-import { <%= name %> } from "@nef/react";
+import { <%= name %> } from "@nef/core";
 ```
 
 ## Example use
