@@ -34,7 +34,7 @@ A README file created for a component named `Test` using this generator looks as
 ## Usage
 
 ```javascript
-import { Test } from "@nef/react";
+import { Test } from "@nef/core";
 ```
 
 ## Example use
