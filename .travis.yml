@@ -16,11 +16,13 @@ jobs:
   include:
     - stage: version
       if: (NOT type IN (pull_request)) AND (branch = master)
-      script: "git checkout master && yarn lerna version --conventional-commits --yes --create-release github"
+      script:
+        - git config --global user.email ${GITHUB_EMAIL}
+        - git config --global user.name ${GITHUB_USER}
+        - git remote set-url origin "https://${GITHUB_TOKEN}@github.com/Nasdaq/alfheim.git" > /dev/null 2>&1
+        - git checkout master
+        - yarn lerna version --conventional-commits --yes --create-release github
 before_deploy:
-  - git config --global user.email ${GITHUB_EMAIL}
-  - git config --global user.name ${GITHUB_USER}
-  - git remote set-url origin "https://${GITHUB_TOKEN}@github.com/Nasdaq/alfheim.git" > /dev/null 2>&1
   - git checkout master
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
 deploy:
