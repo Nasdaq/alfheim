@@ -23,7 +23,7 @@ jobs:
         - git checkout master
         - yarn lerna version --conventional-commits --yes --create-release github
 before_deploy:
-  - git checkout master
+  - git checkout ${TRAVIS_TAG}
   - echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" >> $HOME/.npmrc 2> /dev/null
 deploy:
   provider: script
