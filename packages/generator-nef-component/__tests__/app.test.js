@@ -35,7 +35,7 @@ describe(`generator-nef-component`, () => {
       options.parent = "some-path";
       dirPath = path.join(
         __dirname,
-        `tmp/src/components/${options.parent}/components/${componentName}/`
+        `tmp/components/${options.parent}/components/${componentName}/`
       );
     });
 
@@ -151,7 +151,7 @@ describe(`generator-nef-component`, () => {
   describe(`if 'parent' option is NOT defined`, () => {
     beforeEach(() => {
       options.parent = undefined;
-      dirPath = path.join(__dirname, `tmp/src/components/${componentName}/`);
+      dirPath = path.join(__dirname, `tmp/components/${componentName}/`);
     });
 
     describe(`if 'enable-jsx' is true`, () => {
