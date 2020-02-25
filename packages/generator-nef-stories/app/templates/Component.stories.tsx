@@ -1,17 +1,14 @@
-import { storiesOf } from "@storybook/react";
-import { withKnobs } from "@storybook/addon-knobs/react";
 import React from "react";
-import marked from "marked";
-
-import <%= name %>Readme from "./README.md";
+import { withKnobs } from "@storybook/addon-knobs/react";
 
 import <%= name %> from ".";
 
-const <%= name %>Stories = storiesOf("<%= name %>", module)
-  .addDecorator(withKnobs)
-  .addParameters({
-    info: { text: marked(<%= name %>Readme) }
-  })
-  .add("basic use", () => <<%= name %> />);
+const <%= name %>Stories = {
+  title: "<%= name %>Stories",
+  component: <%= name %>,
+  decorators: [withKnobs]
+};
+
+export const BasicUse = () => <<%= name %> />;
 
 export default <%= name %>Stories;

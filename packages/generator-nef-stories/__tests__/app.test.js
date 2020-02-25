@@ -33,17 +33,6 @@ describe(`generator-nef-stories`, () => {
       assert.fileContent(filePath, 'import React from "react";');
     });
 
-    it(`should import marked`, () => {
-      assert.fileContent(filePath, 'import marked from "marked";');
-    });
-
-    it(`should import the component's readme`, () => {
-      assert.fileContent(
-        filePath,
-        `import ${componentName}Readme from "./README.md";`
-      );
-    });
-
     it(`should import the component`, () => {
       assert.fileContent(filePath, `import ${componentName} from ".";`);
     });
@@ -51,21 +40,14 @@ describe(`generator-nef-stories`, () => {
     it(`should create stories for component`, () => {
       assert.fileContent(
         filePath,
-        `const ${componentName}Stories = storiesOf("${componentName}", module)`
-      );
-    });
-
-    it(`should add README file as a parameter`, () => {
-      assert.fileContent(
-        filePath,
-        `info: { text: marked(${componentName}Readme) }`
+        `const ${componentName}Stories = {`
       );
     });
 
     it(`should add a basic story`, () => {
       assert.fileContent(
         filePath,
-        `.add("basic use", () => <${componentName} />);`
+        `export const BasicUse = () => <${componentName} />;`
       );
     });
 
@@ -95,17 +77,6 @@ describe(`generator-nef-stories`, () => {
       assert.fileContent(filePath, 'import React from "react";');
     });
 
-    it(`should import marked`, () => {
-      assert.fileContent(filePath, 'import marked from "marked";');
-    });
-
-    it(`should import the component's readme`, () => {
-      assert.fileContent(
-        filePath,
-        `import ${componentName}Readme from "./README.md";`
-      );
-    });
-
     it(`should import the component`, () => {
       assert.fileContent(filePath, `import ${componentName} from ".";`);
     });
@@ -113,21 +84,14 @@ describe(`generator-nef-stories`, () => {
     it(`should create stories for component`, () => {
       assert.fileContent(
         filePath,
-        `const ${componentName}Stories = storiesOf("${componentName}", module)`
-      );
-    });
-
-    it(`should add README file as a parameter`, () => {
-      assert.fileContent(
-        filePath,
-        `info: { text: marked(${componentName}Readme) }`
+        `const ${componentName}Stories = {`
       );
     });
 
     it(`should add a basic story`, () => {
       assert.fileContent(
         filePath,
-        `.add("basic use", () => <${componentName} />);`
+        `export const BasicUse = () => <${componentName} />;`
       );
     });
 
