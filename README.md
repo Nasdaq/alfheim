@@ -91,30 +91,6 @@ Pass this flag when you want the outputted component to be a class-based React c
 
 Note that in many cases, you can also accomplish the above by using [React hooks](https://reactjs.org/docs/hooks-intro.html) and forego the need to use a class component altogether.
 
-#### `--enable-jsx`
-
-By default, the styles file created will appear like this:
-
-```typescript
-import styled from 'styled-components';
-
-const StyledExampleComponent = styled.div``;
-
-export default StyledExampleComponent;
-```
-
-This may become an issue with more complex components that receive custom props, as `styled-components` simply forwards all props it receives to the DOM, potentially resulting in console error messages about unrecognized props. By using the `--enable-jsx` flag, your styled component will instead take the following appearance:
-
-```typescript
-import styled from 'styled-components';
-
-const StyledExampleComponent = styled(({ ...props }) => <div {...props} />)``;
-
-export default StyledExampleComponent;
-```
-
-Using this syntax, you can prevent the props you need in the styled-component from being passed down to the DOM by including it/them in the props destructuring. 
-
 #### `--no-mount-tests`
 
 Use this flag to prevent the import of enzyme's `mount` method and all associated setup work. Useful when your component is very low-level and doesn't need integration testing.
