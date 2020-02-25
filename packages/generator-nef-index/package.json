@@ -18,5 +18,10 @@
   ],
   "dependencies": {
     "yeoman-generator": "^4.0.1"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "styled-components": "^4.4.1"
   }
 }
