@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-stories@0.4.3...@alfheim/generator-nef-stories@0.5.0) (2020-02-25)
+
+
+### Features
+
+* transition `generator-nef-stories` to use CSF syntax ([#28](https://github.com/Nasdaq/alfheim/issues/28)) ([293bf04](https://github.com/Nasdaq/alfheim/commit/293bf04))
+
+
+
+
+
 ## [0.4.3](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-stories@0.4.2...@alfheim/generator-nef-stories@0.4.3) (2020-02-19)
 
 **Note:** Version bump only for package @alfheim/generator-nef-stories
