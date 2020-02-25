@@ -18,8 +18,7 @@
   ],
   "dependencies": {
     "@alfheim/generator-nef-index": "^0.3.2",
-    "@alfheim/generator-nef-readme": "^0.3.2",
-    "@alfheim/generator-nef-stories": "^0.5.0",
+    "@alfheim/generator-nef-stories-mdx": "^0.1.0",
     "@alfheim/generator-nef-tests": "^0.3.2",
     "yeoman-generator": "^4.0.1"
   }

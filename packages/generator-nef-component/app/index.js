@@ -53,25 +53,20 @@ module.exports = class extends Generator {
       : "components/";
 
     // create index file
+    this.composeWith(require.resolve("@alfheim/generator-nef-index/app"), {
+      arguments: this.args,
+      c: this.options["class-component"],
+      p: relativePath
+    });
+
+    // create stories file
     this.composeWith(
-      require.resolve("@alfheim/generator-nef-index/app"), {
+      require.resolve("@alfheim/generator-nef-stories-mdx/app"),
+      {
         arguments: this.args,
-        c: this.options["class-component"],
         p: relativePath
       }
     );
-
-    // create readme file
-    this.composeWith(require.resolve("@alfheim/generator-nef-readme/app"), {
-      arguments: this.args,
-      p: relativePath
-    })
-
-    // create stories file
-    this.composeWith(require.resolve("@alfheim/generator-nef-stories/app"), {
-      arguments: this.args,
-      p: relativePath
-    })
 
     // create tests file
     this.composeWith(require.resolve("@alfheim/generator-nef-tests/app"), {
@@ -80,6 +75,6 @@ module.exports = class extends Generator {
       m: this.options["mount-tests"],
       r: this.options["render-tests"],
       s: this.options["shallow-tests"]
-    })
+    });
   }
 };

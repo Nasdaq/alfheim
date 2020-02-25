@@ -39,111 +39,47 @@ describe(`generator-nef-component`, () => {
       );
     });
 
-    describe(`if 'enable-jsx' is true`, () => {
+    describe(`if at least one type of test is true`, () => {
       beforeEach(() => {
-        options["enable-jsx"] = true;
+        const index = Math.floor(Math.random() * 3);
+
+        options["mount-tests"] = index === 0 || Math.random() > 0.5;
+        options["render-tests"] = index === 1 || Math.random() > 0.5;
+        options["shallow-tests"] = index === 2 || Math.random() > 0.5;
+
+        return run(options);
       });
 
-      describe(`if at least one type of test is true`, () => {
-        beforeEach(() => {
-          const index = Math.floor(Math.random() * 3);
-
-          options["mount-tests"] = index === 0 || Math.random() > 0.5;
-          options["render-tests"] = index === 1 || Math.random() > 0.5;
-          options["shallow-tests"] = index === 2 || Math.random() > 0.5;
-
-          return run(options);
-        });
-
-        it(`should always create an 'index.tsx' file`, () => {
-          assert.file(dirPath + "index.tsx");
-        });
-
-        it(`should always create a 'README.md' file`, () => {
-          assert.file(dirPath + "README.md");
-        });
-
-        it(`should always create a '<componentName>.stories.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.stories.tsx`);
-        });
-
-        it(`should create a '<componentName>.test.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.test.tsx`);
-        });
+      it(`should always create an 'index.tsx' file`, () => {
+        assert.file(dirPath + "index.tsx");
       });
 
-      describe(`if none of the tests are true`, () => {
-        beforeEach(() => {
-          options["mount-tests"] = false;
-          options["render-tests"] = false;
-          options["shallow-tests"] = false;
-          sinon.stub(process, "exit");
+      it(`should always create a '<componentName>.stories.mdx' file`, () => {
+        assert.file(dirPath + `${componentName}.stories.mdx`);
+      });
 
-          return run(options);
-        });
-
-        afterEach(() => {
-          process.exit.restore();
-        });
-
-        it(`should process exit with code 1`, () => {
-          sinon.assert.called(process.exit);
-          sinon.assert.calledWith(process.exit, 1);
-        });
+      it(`should create a '<componentName>.test.tsx' file`, () => {
+        assert.file(dirPath + `${componentName}.test.tsx`);
       });
     });
 
-    describe(`if 'enable-jsx' is false`, () => {
+    describe(`if none of the tests are true`, () => {
       beforeEach(() => {
-        options["enable-jsx"] = false;
+        options["mount-tests"] = false;
+        options["render-tests"] = false;
+        options["shallow-tests"] = false;
+        sinon.stub(process, "exit");
+
+        return run(options);
       });
 
-      describe(`if at least one type of test is true`, () => {
-        beforeEach(() => {
-          const index = Math.floor(Math.random() * 3);
-
-          options["mount-tests"] = index === 0 || Math.random() > 0.5;
-          options["render-tests"] = index === 1 || Math.random() > 0.5;
-          options["shallow-tests"] = index === 2 || Math.random() > 0.5;
-
-          return run(options);
-        });
-
-        it(`should always create an 'index.tsx' file`, () => {
-          assert.file(dirPath + "index.tsx");
-        });
-
-        it(`should always create a 'README.md' file`, () => {
-          assert.file(dirPath + "README.md");
-        });
-
-        it(`should always create a '<componentName>.stories.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.stories.tsx`);
-        });
-
-        it(`should create a '<componentName>.test.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.test.tsx`);
-        });
+      afterEach(() => {
+        process.exit.restore();
       });
 
-      describe(`if none of the tests are true`, () => {
-        beforeEach(() => {
-          options["mount-tests"] = false;
-          options["render-tests"] = false;
-          options["shallow-tests"] = false;
-          sinon.stub(process, "exit");
-
-          return run(options);
-        });
-
-        afterEach(() => {
-          process.exit.restore();
-        });
-
-        it(`should process exit with code 1`, () => {
-          sinon.assert.called(process.exit);
-          sinon.assert.calledWith(process.exit, 1);
-        });
+      it(`should process exit with code 1`, () => {
+        sinon.assert.called(process.exit);
+        sinon.assert.calledWith(process.exit, 1);
       });
     });
   });
@@ -154,111 +90,47 @@ describe(`generator-nef-component`, () => {
       dirPath = path.join(__dirname, `tmp/components/${componentName}/`);
     });
 
-    describe(`if 'enable-jsx' is true`, () => {
+    describe(`if at least one type of test is true`, () => {
       beforeEach(() => {
-        options["enable-jsx"] = true;
+        const index = Math.floor(Math.random() * 3);
+
+        options["mount-tests"] = index === 0 || Math.random() > 0.5;
+        options["render-tests"] = index === 1 || Math.random() > 0.5;
+        options["shallow-tests"] = index === 2 || Math.random() > 0.5;
+
+        return run(options);
       });
 
-      describe(`if at least one type of test is true`, () => {
-        beforeEach(() => {
-          const index = Math.floor(Math.random() * 3);
-
-          options["mount-tests"] = index === 0 || Math.random() > 0.5;
-          options["render-tests"] = index === 1 || Math.random() > 0.5;
-          options["shallow-tests"] = index === 2 || Math.random() > 0.5;
-
-          return run(options);
-        });
-
-        it(`should always create an 'index.tsx' file`, () => {
-          assert.file(dirPath + "index.tsx");
-        });
-
-        it(`should always create a 'README.md' file`, () => {
-          assert.file(dirPath + "README.md");
-        });
-
-        it(`should always create a '<componentName>.stories.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.stories.tsx`);
-        });
-
-        it(`should create a '<componentName>.test.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.test.tsx`);
-        });
+      it(`should always create an 'index.tsx' file`, () => {
+        assert.file(dirPath + "index.tsx");
       });
 
-      describe(`if none of the tests are true`, () => {
-        beforeEach(() => {
-          options["mount-tests"] = false;
-          options["render-tests"] = false;
-          options["shallow-tests"] = false;
-          sinon.stub(process, "exit");
+      it(`should always create a '<componentName>.stories.mdx' file`, () => {
+        assert.file(dirPath + `${componentName}.stories.mdx`);
+      });
 
-          return run(options);
-        });
-
-        afterEach(() => {
-          process.exit.restore();
-        });
-
-        it(`should process exit with code 1`, () => {
-          sinon.assert.called(process.exit);
-          sinon.assert.calledWith(process.exit, 1);
-        });
+      it(`should create a '<componentName>.test.tsx' file`, () => {
+        assert.file(dirPath + `${componentName}.test.tsx`);
       });
     });
 
-    describe(`if 'enable-jsx' is false`, () => {
+    describe(`if none of the tests are true`, () => {
       beforeEach(() => {
-        options["enable-jsx"] = false;
+        options["mount-tests"] = false;
+        options["render-tests"] = false;
+        options["shallow-tests"] = false;
+        sinon.stub(process, "exit");
+
+        return run(options);
       });
 
-      describe(`if at least one type of test is true`, () => {
-        beforeEach(() => {
-          const index = Math.floor(Math.random() * 3);
-
-          options["mount-tests"] = index === 0 || Math.random() > 0.5;
-          options["render-tests"] = index === 1 || Math.random() > 0.5;
-          options["shallow-tests"] = index === 2 || Math.random() > 0.5;
-
-          return run(options);
-        });
-
-        it(`should always create an 'index.tsx' file`, () => {
-          assert.file(dirPath + "index.tsx");
-        });
-
-        it(`should always create a 'README.md' file`, () => {
-          assert.file(dirPath + "README.md");
-        });
-
-        it(`should always create a '<componentName>.stories.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.stories.tsx`);
-        });
-
-        it(`should create a '<componentName>.test.tsx' file`, () => {
-          assert.file(dirPath + `${componentName}.test.tsx`);
-        });
+      afterEach(() => {
+        process.exit.restore();
       });
 
-      describe(`if none of the tests are true`, () => {
-        beforeEach(() => {
-          options["mount-tests"] = false;
-          options["render-tests"] = false;
-          options["shallow-tests"] = false;
-          sinon.stub(process, "exit");
-
-          return run(options);
-        });
-
-        afterEach(() => {
-          process.exit.restore();
-        });
-
-        it(`should process exit with code 1`, () => {
-          sinon.assert.called(process.exit);
-          sinon.assert.calledWith(process.exit, 1);
-        });
+      it(`should process exit with code 1`, () => {
+        sinon.assert.called(process.exit);
+        sinon.assert.calledWith(process.exit, 1);
       });
     });
   });
