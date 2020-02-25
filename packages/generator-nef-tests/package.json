@@ -18,5 +18,11 @@
   ],
   "dependencies": {
     "yeoman-generator": "^4.0.1"
+  },
+  "peerDependencies": {
+    "enzyme": "=3.9.0",
+    "jest": "^24.9.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   }
 }

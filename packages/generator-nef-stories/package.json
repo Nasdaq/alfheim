@@ -18,5 +18,10 @@
   ],
   "dependencies": {
     "yeoman-generator": "^4.0.1"
+  },
+  "peerDependencies": {
+    "@storybook/addon-knobs": "^5.3.4",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   }
 }
