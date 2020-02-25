@@ -1,0 +1,34 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs } from "@storybook/addon-knobs/react";
+
+import <%= name %> from ".";
+
+<Meta title="<%= name %>" component={<%= name %>} decorators={[withKnobs]} />
+
+# <%= name %>
+
+<Preview>
+  <Story name="basic use">
+    <<%= name %> />
+  </Story>
+</Preview>
+
+## Introduction
+
+`<%= name %>` is a React component.
+
+## Usage
+
+```javascript
+import { <%= name %> } from "@nef/core";
+```
+
+## Properties
+
+| propName    | propType                           | defaultValue | isRequired | Description                                     |
+| ----------- | ---------------------------------- | ------------ | ---------- | ----------------------------------------------- |
+| `className` | string                             | -            | -          | is the class name of the component              |
+| `children`  | oneOfType( node, arrayOf( node ) ) | -            | -          | is the children to be passed into component     |
+| `style`     | object                             | -            | -          | is the style object to be passed into component |
+| `name`      | string                             | -            | -          | id to be passed to the DOM                      |
+| `id`        | string                             | -            | -          | name to be passed to the DOM                    |
