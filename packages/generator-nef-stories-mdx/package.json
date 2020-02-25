@@ -1,6 +1,6 @@
 {
   "name": "@alfheim/generator-nef-stories-mdx",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Yeoman generator for basic NEF component stories using MDX syntax for Storybook",
   "author": "Haldun Anil",
   "homepage": "https://github.com/Nasdaq/alfheim/tree/master/packages/generator-nef-stories-mdx",
