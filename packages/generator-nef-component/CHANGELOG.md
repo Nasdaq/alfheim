@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.5](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-component@0.4.4...@alfheim/generator-nef-component@0.4.5) (2020-03-12)
+
+
+### Bug Fixes
+
+* `create-component` function ([f1d6dbe](https://github.com/Nasdaq/alfheim/commit/f1d6dbe))
+
+
+
+
+
 ## [0.4.4](https://github.com/Nasdaq/alfheim/compare/@alfheim/generator-nef-component@0.4.3...@alfheim/generator-nef-component@0.4.4) (2020-02-25)
 
 **Note:** Version bump only for package @alfheim/generator-nef-component
