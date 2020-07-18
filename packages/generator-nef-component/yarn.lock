@@ -2,6 +2,27 @@
 # yarn lockfile v1
 
 
+"@alfheim/generator-nef-index@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-index/-/generator-nef-index-0.3.3.tgz#db967d581d120512f4e4dc2e5196c599e59c6975"
+  integrity sha512-48fVSMsJrTLU2Bewqo1fcs9dtOb9ure3Xkic7Z9uQY8tfxQr7ejLpmjtDxQXmFDd7nMphbjZxRkarKolbzhYuQ==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-stories-mdx@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-stories-mdx/-/generator-nef-stories-mdx-0.2.0.tgz#2afa46ed05e068ae09dd389411ca359c274f7ce9"
+  integrity sha512-i2sol7HbOfPoZ/c8Ec7nhQLNr/CDHrRqU3QX4YGgEzldcxEXWhDtB60HMFDHDYW4Ghbh3IT4pdI4UfEKhpHiYg==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-tests@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-tests/-/generator-nef-tests-0.3.3.tgz#8ed3d68f2d476b607535d2dcd1e2e18a181698a5"
+  integrity sha512-1n9QjK32I31Sv+AtwI9stzi4PqgCfFvvW5vMGVq7373yx4YQCJGe1t4bLejK2oxN7utg01OXDETNBvnjChKDmw==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
 "@babel/code-frame@^7.0.0":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -2144,9 +2165,9 @@ lodash.padstart@^4.1.0:
   integrity sha1-0uPuv/DZ05rVD1y9G1KnvOa7YRs=
 
 lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.2, lodash@^4.3.0:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
 log-symbols@^2.1.0, log-symbols@^2.2.0:
   version "2.2.0"
