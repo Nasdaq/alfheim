@@ -2,6 +2,27 @@
 # yarn lockfile v1
 
 
+"@alfheim/generator-nef-index@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-index/-/generator-nef-index-0.3.3.tgz#db967d581d120512f4e4dc2e5196c599e59c6975"
+  integrity sha512-48fVSMsJrTLU2Bewqo1fcs9dtOb9ure3Xkic7Z9uQY8tfxQr7ejLpmjtDxQXmFDd7nMphbjZxRkarKolbzhYuQ==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-stories-mdx@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-stories-mdx/-/generator-nef-stories-mdx-0.2.0.tgz#2afa46ed05e068ae09dd389411ca359c274f7ce9"
+  integrity sha512-i2sol7HbOfPoZ/c8Ec7nhQLNr/CDHrRqU3QX4YGgEzldcxEXWhDtB60HMFDHDYW4Ghbh3IT4pdI4UfEKhpHiYg==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-tests@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-tests/-/generator-nef-tests-0.3.3.tgz#8ed3d68f2d476b607535d2dcd1e2e18a181698a5"
+  integrity sha512-1n9QjK32I31Sv+AtwI9stzi4PqgCfFvvW5vMGVq7373yx4YQCJGe1t4bLejK2oxN7utg01OXDETNBvnjChKDmw==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
 "@babel/code-frame@^7.0.0":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -1610,9 +1631,9 @@ inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.3:
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
 ini@^1.3.4, ini@~1.3.0:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
-  integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
+  version "1.3.7"
+  resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.7.tgz#a09363e1911972ea16d7a8851005d84cf09a9a84"
+  integrity sha512-iKpRpXP+CrP2jyrxvg1kMUpXDyRUFDWurxbnVT1vQPx+Wz9uCYsMIqYuSBLV+PAaZG/d7kRLKRFc9oDMsH+mFQ==
 
 inquirer@^1.0.2:
   version "1.2.3"
