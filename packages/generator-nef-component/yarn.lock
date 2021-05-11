@@ -2,6 +2,27 @@
 # yarn lockfile v1
 
 
+"@alfheim/generator-nef-index@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-index/-/generator-nef-index-0.3.3.tgz#db967d581d120512f4e4dc2e5196c599e59c6975"
+  integrity sha512-48fVSMsJrTLU2Bewqo1fcs9dtOb9ure3Xkic7Z9uQY8tfxQr7ejLpmjtDxQXmFDd7nMphbjZxRkarKolbzhYuQ==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-stories-mdx@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-stories-mdx/-/generator-nef-stories-mdx-0.2.0.tgz#2afa46ed05e068ae09dd389411ca359c274f7ce9"
+  integrity sha512-i2sol7HbOfPoZ/c8Ec7nhQLNr/CDHrRqU3QX4YGgEzldcxEXWhDtB60HMFDHDYW4Ghbh3IT4pdI4UfEKhpHiYg==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-tests@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-tests/-/generator-nef-tests-0.3.3.tgz#8ed3d68f2d476b607535d2dcd1e2e18a181698a5"
+  integrity sha512-1n9QjK32I31Sv+AtwI9stzi4PqgCfFvvW5vMGVq7373yx4YQCJGe1t4bLejK2oxN7utg01OXDETNBvnjChKDmw==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
 "@babel/code-frame@^7.0.0":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -1532,9 +1553,9 @@ has-values@^1.0.0:
     kind-of "^4.0.0"
 
 hosted-git-info@^2.1.4:
-  version "2.8.4"
-  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.4.tgz#44119abaf4bc64692a16ace34700fed9c03e2546"
-  integrity sha512-pzXIvANXEFrc5oFFXRMkbLPQ2rXRoDERwDLyrcUxGhaZhgP54BBSl9Oheh7Vv0T090cszWBxPjkQQ5Sq1PbBRQ==
+  version "2.8.9"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
+  integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
 http-cache-semantics@3.8.1:
   version "3.8.1"
