@@ -2,6 +2,27 @@
 # yarn lockfile v1
 
 
+"@alfheim/generator-nef-index@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-index/-/generator-nef-index-0.3.3.tgz#db967d581d120512f4e4dc2e5196c599e59c6975"
+  integrity sha512-48fVSMsJrTLU2Bewqo1fcs9dtOb9ure3Xkic7Z9uQY8tfxQr7ejLpmjtDxQXmFDd7nMphbjZxRkarKolbzhYuQ==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-stories-mdx@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-stories-mdx/-/generator-nef-stories-mdx-0.2.0.tgz#2afa46ed05e068ae09dd389411ca359c274f7ce9"
+  integrity sha512-i2sol7HbOfPoZ/c8Ec7nhQLNr/CDHrRqU3QX4YGgEzldcxEXWhDtB60HMFDHDYW4Ghbh3IT4pdI4UfEKhpHiYg==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
+"@alfheim/generator-nef-tests@^0.3.3":
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/@alfheim/generator-nef-tests/-/generator-nef-tests-0.3.3.tgz#8ed3d68f2d476b607535d2dcd1e2e18a181698a5"
+  integrity sha512-1n9QjK32I31Sv+AtwI9stzi4PqgCfFvvW5vMGVq7373yx4YQCJGe1t4bLejK2oxN7utg01OXDETNBvnjChKDmw==
+  dependencies:
+    yeoman-generator "^4.0.1"
+
 "@babel/code-frame@^7.0.0":
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.5.5.tgz#bc0782f6d69f7b7d49531219699b988f669a8f9d"
@@ -930,11 +951,6 @@ es6-error@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/es6-error/-/es6-error-4.1.1.tgz#9e3af407459deed47e9a91f9b885a84eb05c561d"
   integrity sha512-Um/+FxMr9CISWh0bi5Zv0iOD+4cFh5qLeks1qhAopKVAJw3drgKbKySikp7wGhDL0HPeaja0P5ULZrxLkniUVg==
-
-es6-promise@^4.2.5:
-  version "4.2.8"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-4.2.8.tgz#4eb21594c972bc40553d276e510539143db53e0a"
-  integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
 
 escape-string-regexp@^1.0.2, escape-string-regexp@^1.0.5:
   version "1.0.5"
@@ -2117,11 +2133,9 @@ locate-path@^3.0.0:
     path-exists "^3.0.0"
 
 locutus@^2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/locutus/-/locutus-2.0.11.tgz#83f85109971fd3dd620482a04381916e4a31d4f0"
-  integrity sha512-C0q1L38lK5q1t+wE0KY21/9szrBHxye6o2z5EJzU+5B79tubNOC+nLAEzTTn1vPUGoUuehKh8kYKqiVUTWRyaQ==
-  dependencies:
-    es6-promise "^4.2.5"
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/locutus/-/locutus-2.0.15.tgz#d75b9100713aaaf30be8b38ed6543910498c0db0"
+  integrity sha512-2xWC4RkoAoCVXEb/stzEgG1TNgd+mrkLBj6TuEDNyUoKeQ2XzDTyJUC23sMiqbL6zJmJSP3w59OZo+zc4IBOmA==
 
 lodash.debounce@^4.0.8:
   version "4.0.8"
